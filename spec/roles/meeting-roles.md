@@ -29,6 +29,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 - **RBAC-kärna (efter mötet):** Justera protokoll jämte vald justerare (LEF 6:26, LFS 49§). Rollen förblir aktiv tills protokollet är signerat.
 - **Edition-avvikelser:** Inga strukturella.
 - **Hot att skydda:** Jäv — om föreningens sittande ordförande är part i en stämmofråga kan stämman välja någon annan till mötesordförande just för den frågan. Systemet måste tillåta byte mid-stämma, loggat i protokollet.
+- **Medlemskap och utslagsröst:** Inget lagstadgat krav att mötesordförande är medlem (LEF 6:19, LFS 49§ ger stämman fri valrätt). Stadgan kan dock föreskriva det. **Praktisk konsekvens vid icke-medlem som mötesordförande:** hen kan inte ge utslagsröst vid lika röstetal eftersom hen inte är röstberättigad. Lika röstetal blir då antingen avslag (status quo-tolkning) eller går till lottning om stadgan föreskriver det. Systemet flaggar valet av extern ordförande med kort varning — *"Personen är inte medlem och kan därmed inte avge utslagsröst"* — men hindrar inte valet (det är legitimt vid jäv eller önskan om ovillkorlig opartiskhet).
 - **`[ÖPPEN]`:** Ska systemet stödja *byte av mötesordförande mid-stämma* för enskilda punkter, eller kräva att stämman pausas och ny mötesordförande väljs? Förslag: stödja punkt-specifikt byte, eftersom det är juridiskt legitimt och vanligt vid jäv.
 
 ## Mötessekreterare

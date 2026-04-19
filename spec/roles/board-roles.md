@@ -56,10 +56,24 @@ Varje roll beskrivs med:
 
 - **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Föreningsstadgar.
-- **Ansvar:** Protokollföring vid styrelsemöten, hantera kallelseutskick för styrelsen, arkivhantering.
-- **RBAC-kärna:** Skapa och redigera protokollutkast; publicera protokoll när justerare godkänt; hantera kallelseutskick; skriva i dokumentarkivet; se styrelsens arbetsyta fullt ut.
+- **Ansvar:** Protokollföring vid styrelsemöten, hantera kallelseutskick för styrelsen, arkivhantering, **operativ huvudaktör för stämmoförberedelse** (se nedan).
+- **RBAC-kärna:** Skapa och redigera protokollutkast; publicera protokoll när justerare godkänt; hantera kallelseutskick; skriva i dokumentarkivet; se styrelsens arbetsyta fullt ut; konfigurera möten i systemet.
 - **Edition-avvikelser:** Inga strukturella. Workflow kan skifta om föreningen anlitar `ExternalAdministrator` för kallelsehantering.
 - **Hot att skydda:** Historierevision — protokoll är det primära bevisvärdet över tid; en sekreterare med slarviga rutiner öppnar erosions-ytan ([threats.md](../threats.md)).
+
+### Sekreterarens roll vid stämmoförberedelse
+
+Ordförande beslutar att kalla och ansvarar formellt. Sekreteraren *verkställer* — driver det operativa förarbetet i systemet:
+
+- Samlar dagordningsförslag, motioner, styrelseförslag, verksamhetsberättelse, revisionsberättelse och övriga underlag
+- Konfigurerar mötet i systemet (datum, tid, lokal, mötestyp)
+- Genererar röstlängds-underlag enligt [rostlangd.md](../rostlangd.md#före-mötet---röstlängds-underlag)
+- Föreslår mötesroller (mötesordförande, mötessekreterare, justerare, rösträknare) — stämmans val sker dock alltid på mötet enligt [meeting-roles.md](meeting-roles.md)
+- Sätter upp dagordningen från mall ([moten.md](../moten.md)) + förfyllning av öppna ärenden
+- Samlar och katalogiserar bilagor (typ FIL/URL/TEXTNOTERING enligt [granskningslogg.md](../granskningslogg.md#bilagor))
+- Hanterar kallelseutskicket via systemets distribution-mekanik
+
+Efter stämman driver sekreteraren protokollet: utkast, justering-cirkulation, slutpublicering, skanning av pappers-röstlängd och fullmakter som protokollsbilagor.
 
 ## Kassör
 

@@ -183,7 +183,9 @@ Vid onboarding går wizarden igenom dessa parametrar; defaults används för oty
 
 ## Systemets förberedelsestöd per möte
 
-Inför varje möte erbjuder Tillsammans:
+**Sekreteraren är operativ huvudaktör** för förberedelsen — driver det praktiska arbetet i systemet medan ordförande beslutar formellt och kallar. Detaljerat ansvar specas i [roles/board-roles.md#sekreterarens-roll-vid-stämmoförberedelse](roles/board-roles.md#sekreterarens-roll-vid-stämmoförberedelse).
+
+Inför varje möte erbjuder Tillsammans (sekreteraren använder):
 
 1. **Dagordnings-mall** — föreslagen baserat på mötestyp + stadgad tagning + öppna ärenden i case-types-systemet
 2. **Röstlängds-snapshot** — beräknad enligt stadgad röstmetod, med fullmakter inräknade

@@ -71,13 +71,13 @@ Stämmor är sociala/fysiska händelser där medlemmar ankommer, skriver in sig 
 
 ### Före mötet — röstlängds-underlag
 
-Systemet genererar **röstlängds-underlag** baserat på `AKTIV`-medlemmar vid kallelsetillfället:
+**Sekreteraren** genererar röstlängds-underlaget i systemet som del av stämmoförberedelsen (se [roles/board-roles.md#sekreterarens-roll-vid-stämmoförberedelse](roles/board-roles.md#sekreterarens-roll-vid-stämmoförberedelse)). Underlaget bygger på `AKTIV`-medlemmar vid kallelsetillfället:
 
 - En PDF eller utskrivbar lista över förväntade röstberättigade
 - För **samfällighet:** per fastighetsbeteckning + ägare + andelstal per GA + ev. samägande-info
 - För **LEF:** per medlem + insats-status + organisationsnummer för juridiska personer
 
-Underlaget är **inte** en juridisk röstlängd — det är referens för mötesordförande och rösträknare. Kan skrivas ut för bordet vid stämmans ingång eller hållas digitalt på mötesordförandes enhet.
+Underlaget är **inte** en juridisk röstlängd — det är referens för mötesordförande och rösträknare. Kan skrivas ut för bordet vid stämmans ingång eller hållas digitalt på mötesordförandes enhet. Pappers-röstlängden som faktiskt fylls i under mötet är det som blir del av protokollet (skannas in efter mötet).
 
 ### Under mötet — pappers-rutin
 
