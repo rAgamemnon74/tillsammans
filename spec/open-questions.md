@@ -13,15 +13,9 @@
 
 ## Öppna specifikationsfrågor
 
-### `[ÖPPEN]` DecisionLog — immutability-nivå
+### ~~`[ÖPPEN]` DecisionLog — immutability-nivå~~ (löst)
 
-Tre nivåer:
-
-1. **Konvention** — append-only i appkoden.
-2. **DB-tvingat** — PostgreSQL-triggers/RLS blockerar UPDATE/DELETE.
-3. **Manipulationsbevis** — hash-kedja (varje post hashar föregående).
-
-För en demokratiplattform är (2) + (3) försvarligt. Rättelser görs som *nya poster som refererar originalet*, aldrig som ändring.
+Beslutad arkitektur finns i [granskningslogg.md](granskningslogg.md): sex-lager-stack (L1 appkonvention, L2 DB-tvingad immutabilitet, L3 hash-kedja — obligatoriska; L4 extern förankring via OpenTimestamps som default, L5 distribuerade kopior, L6 publik tip-hash — opt-in). Rättelser som nya händelser; räkenskapsårs-epoker med sigill vid ansvarsfrihet; retroaktiva tillägg (addenda) via fem typkodade vägar. Kvarvarande öppna detaljer är listade sist i `granskningslogg.md` — inte här.
 
 ### `[ÖPPEN]` Andelstal — teknisk representation
 
