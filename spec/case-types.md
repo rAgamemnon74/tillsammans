@@ -23,14 +23,141 @@ Varje ärendetyp i biblioteket dokumenteras med följande fält:
 - **Syfte** — vad ärendetypen finns för.
 - **Primär initiator** — vilken roll påbörjar typiskt ett ärende.
 - **Obligatoriska fält** — minsta datauppsättning.
-- **Livscykel** — statusvärden + tillåtna övergångar.
+- **Livscykel** — statusvärden + tillåtna övergångar (specialiserar [livscykel-motorn](#livscykel-motor) nedan).
 - **RBAC per övergång** — vilka roller får driva ärendet framåt.
-- **Tidsregler** — deadlines, fönster, stadgebestämda tidskrav.
+- **Tidsregler** — deadlines, fönster, stadgebestämda tidskrav (bygger på [tidsregler](#tidsregler-och-deadlines)).
 - **Relationer** — till möte, beslut, protokoll, andra ärenden, stadgaparagrafer.
 - **Publicering** — publik / medlem / styrelse / berörd person, per status.
+- **Notifiering** — vilka aktörer informeras vid vilka övergångar (bygger på [distribution](#distribution-och-notifiering)).
 - **Textbibliotek** — mallar för de meddelanden ärendet genererar.
 - **GDPR-hänsyn** — känslighetsklass, gallring, särskild hantering per edition.
 - **Hot och försvar** — vilka hot mot governance ärendetypen särskilt utsätts för, och mekanismerna som möter dem.
+
+---
+
+## Gemensam infrastruktur för ärendehantering
+
+Alla ärendetyper bygger på samma underliggande mekanik. Att specificera infrastrukturen separat besparar duplikation — varje ärendetyp anger bara sina specifikt avvikande detaljer mot denna grund.
+
+### Nio gemensamma aktiviteter
+
+Alla ärendetyper kombinerar en delmängd av:
+
+1. **Initiera** — aktör skapar ärendet; obligatoriska fält + bilagor registreras; ärendenummer tilldelas
+2. **Formaliakontroll** — automatisk validering (obligatoriska fält, tidsfrister) + ev. manuell granskares bedömning
+3. **Distribuera** — berörda aktörer notifieras
+4. **Bereda** — handläggare/styrelse granskar, diskuterar, förbereder beslutsunderlag
+5. **Publicera för beslut** — ärendet blir tillgängligt för beslutsorganet (styrelse eller stämma)
+6. **Besluta** — beslutsorganet avgör med ev. röstning + jäv-deklaration
+7. **Verkställa** — effekt på register/system (medlem aktiveras, stadga uppdateras, utlägg exporteras)
+8. **Kommunicera utfall** — berörda parter får besked
+9. **Avsluta / arkivera** — ärendet markeras slutbehandlat; historik bevaras
+
+Infrastrukturen stödjer alla nio. Ärendetyp-specifikationen anger vilka som ingår och vem som utför dem.
+
+### Livscykel-motor
+
+Standard-tillstånd som alla ärendetyper kan använda:
+
+```
+Standard-tillstånd:
+- ÖPPET     — initierat, formalia ej kontrollerad
+- BEREDNING — formalia OK, handläggning pågår
+- BESLUTAT  — beslut fattat, verkställighet pågår eller klar
+- AVSLUTAT  — historik
+
+Gemensamma sidospår (från ÖPPET eller BEREDNING):
+- ÅTERKALLAT           — initiator drar tillbaka
+- AVVISAT_PÅ_FORMALIA  — formaliakrav uppfylls inte
+- BORDLAGT             — flyttas till senare möte/stämma
+```
+
+Ärendetyper specialiserar denna mall:
+
+- *Motion* lägger till `YTTRANDE_FÖRLAGT`, `PUBLICERAD`, `PÅ_STÄMMA` mellan BEREDNING och BESLUTAT.
+- *Medlemsansökan* har egna `INLÄMNAD/GODKÄND/AVSLAGEN`-tillstånd som motsvarar BEREDNING/BESLUTAT-utfallen, plus LEF-specifik `ÖVERKLAGAD_TILL_STÄMMA`.
+- *Utläggsgodkännande* lägger till `KASSÖR_GRANSKAR` och `EXPORTERAD_TILL_BOKFÖRING`.
+- *Uteslutningsärende* har obligatorisk `VARNING` + `SVARSFÖNSTER` före BEREDNING.
+
+Övergångar är typ-specifika och deklareras per ärendetyp. Varje övergång loggas med `ÄRENDE_STATUS_ÄNDRAT`-händelse i granskningsloggen, där systemdata bär från-status och till-status.
+
+Vid övergångar med större betydelse skrivs **specialiserad händelsetyp parallellt** med `ÄRENDE_STATUS_ÄNDRAT`:
+
+| Övergång | Specialiserad händelse |
+|---|---|
+| Avvisning på formalia | `ÄRENDE_AVVISAT_PÅ_FORMALIA` |
+| Bordläggning | `ÄRENDE_BORDLAGT` |
+| Återkallelse av initiator | `ÄRENDE_ÅTERKALLAT` |
+| Beslut (styrelse) | `STYRELSEBESLUT` + `RÖST_AVGIVEN` per ledamot + ev. `JÄV_DEKLARERAT` |
+| Beslut (stämma) | `STÄMMOBESLUT` + `RÖST_AVGIVEN` per medlem + ev. `JÄV_DEKLARERAT` + `RESERVATION_INGIVEN` |
+| Slutavgörande | `ÄRENDE_AVGJORT` med resultat-kod |
+| Typ-specifik effekt | t.ex. `MEDLEMSKAP_GODKÄNT`, `UTLÄGG_GODKÄNT`, `STADGEVERSION_ANTAGEN` |
+
+`ÄRENDE_STATUS_ÄNDRAT` är den generella fallback-händelsen för alla övergångar; specialiserade händelser används parallellt när de tillför mening (beslut, gallring, register-effekt).
+
+### Bilagor på ärenden
+
+Bilage-strukturen specas i [granskningslogg.md#bilagor](granskningslogg.md#bilagor). Tre typer (`FIL`, `URL`, `TEXTNOTERING`) gäller alla ärendetyper.
+
+På ärende-nivå **aggregeras** bilagor från alla händelser med samma `aggregate_id`: en motion som inkommit med två offert-PDF:er, fått en URL-bilaga vid styrelsens beredning, och en kompletterande textnotering vid yttrandet — alla fyra visas i ärendets bilage-vy oavsett vilken event de tillhör.
+
+Visibility per bilaga ärver respektive event-visibility (Väg A från [granskningslogg.md](granskningslogg.md#visibility--strikt-inheritance-väg-a)). Om en känslig bilaga (läkarintyg, kontraktsuppgifter) behöver strängare access än ärendet i övrigt registreras den som **egen `BILAGA_INLÄMNAD`-händelse** med strängare visibility, och refereras från huvudärendet via `references`.
+
+### Ärendets aggregerade vy
+
+UI visar varje ärende som en sammanhållen vy projicerad ur händelseströmmen. Komponenter:
+
+- **Aktuellt tillstånd** — räknas ut via replay av ärendets händelser (filter: `aggregate_id = ärendet`)
+- **Historikspår** — kronologisk lista över alla händelser som rört ärendet
+- **Bilagor** — aggregerat över alla händelser, grupperat per typ (FIL, URL, TEXTNOTERING)
+- **Berörda aktörer** — initiator, handläggare, beslutsfattare, ev. berörd part
+- **Relaterade ärenden** — via `references` (motioner som grupperats, ärenden som denna bordlagts till)
+- **Stadgaförankring** — länkar till de paragrafer ärendet refererar
+- **Resultat** — om AVSLUTAT, vad blev utfallet; om pågående, nästa förväntade steg + deadline
+
+Vyn är en **projektion**, inte sann data. Vid tveksamhet är granskningsloggens händelseström sanningen. Vyn kan caches (materialized view) för prestanda men byggs alltid från events.
+
+Per användarroll renderas vyn olika:
+
+- **Initiator** ser allt offentligt + sin egen registrering, men inte styrelsens interna beredning förrän publicering.
+- **Berörd part** (vid uteslutning, allmänt ärende-klagomål) ser sin del + relevanta beslut, inte annan kommunikation om sig.
+- **Styrelseledamot** ser hela ärendets historik inom epok-rättigheterna.
+- **Revisor** ser allt löpande.
+- **Medlem** ser den publika vyn (varierar per ärendetyp och status).
+
+### Tidsregler och deadlines
+
+Ärendetypers tidsregler kommer från tre källor:
+
+1. **Lag** — kallelseminimum för stämma (LEF/LFS), preskriptionstid för klandertalan, formkrav för uteslutning.
+2. **Stadga** — föreningens egna tidsfönster (motionsfrist, kallelse-max, svarsfönster vid uteslutning, överklagan-fönster).
+3. **Ärendetyp-default** — om varken lag eller stadga säger något (gallringstid för avslag, påminnelse-frekvens).
+
+Systemet räknar deadlines automatiskt från nyckeldatum (kallelsedatum, beslutsdatum, mötesdatum) och genererar **påminnelser** till berörda aktörer:
+
+- **30 dagar före deadline:** informativ påminnelse
+- **7 dagar före:** varning
+- **Vid passerad deadline:** statusövergång enligt ärendetypens regler — typiskt `AVVISAT_PÅ_FORMALIA` (för missade inlämningsfrister), `LAPSED` (för missade förnyelser), eller flagga till handläggaren (för missade granskningstider)
+
+Tidsregler är konfigurerbara per förening i stadge-modulen. Defaults är konservativa — Lantmäteriets normalstadgor för samfällighet, generella mönster för LEF.
+
+### Distribution och notifiering
+
+Varje ärendetyp har en lista av **vilka aktörer som notifieras vid vilka statusövergångar**. Inte vid alla övergångar — bara där notifieringen är meningsfull för respektive aktör.
+
+Exempel för motion:
+
+| Övergång | Notifiering till |
+|---|---|
+| INLÄMNAD | Initiator (kvittens), styrelsen (ny motion att bereda) |
+| YTTRANDE_FÖRLAGT | Initiator (yttrande klart, möjligt att läsa) |
+| PUBLICERAD (kallelse) | Alla medlemmar (via kallelseutskick) |
+| PÅ_STÄMMA | Initiator (om ej närvarande) |
+| AVGJORD | Initiator (resultat) |
+
+**Kanal:** aktörens registrerade kontaktkanal — typiskt e-post för medlemmar, in-app för styrelseledamöter. Inte SMS, inte extern app. Föreningen kan välja (via stadge-konfiguration) om vissa notifieringar dessutom ska ske via brev — typiskt vid uteslutning där rättssäkerhet kräver dokumenterat mottagande.
+
+Notifieringar är **inte** ett separat kommunikationssystem; de återanvänder textbibliotek-mallarna (se [Textbiblioteket](#textbiblioteket) nedan) och loggas inte i granskningsloggen som egen händelse — de är konsekvenser av statusövergångarna och bär samma trovärdighet som ärendets egen audit-trail.
 
 ---
 
