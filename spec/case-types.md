@@ -44,7 +44,7 @@ En medlems formella yrkande till stämman. Motionen är garantin att makten ligg
 
 ### Primär initiator
 
-`MEMBER` (status `ACTIVE`). Styrelsen kan lägga fram *styrelseförslag* som följer samma livscykel men utan eget yttrande-spår — styrelseförslaget *är* styrelsens position.
+`MEMBER` (status `AKTIV`). Styrelsen kan lägga fram *styrelseförslag* som följer samma livscykel men utan eget yttrande-spår — styrelseförslaget *är* styrelsens position.
 
 ### Obligatoriska fält
 
@@ -78,7 +78,7 @@ Sidospår (från vilken status som helst före AVGJORD):
 
 | Övergång | Roller som får utföra |
 |---|---|
-| skapa INLÄMNAD | `MEMBER` (status `ACTIVE`) |
+| skapa INLÄMNAD | `MEMBER` (status `AKTIV`) |
 | INLÄMNAD → ÅTERKALLAD | initiator (tills PUBLICERAD) |
 | INLÄMNAD → BEREDNING | `BOARD_*` |
 | INLÄMNAD / BEREDNING → AVVISAD_PÅ_FORMALIA | `BOARD_CHAIR`, `BOARD_SECRETARY` (kräver motivering + paragrafhänvisning) |
@@ -159,7 +159,7 @@ Som motion men med styrelsen som initiator. Inget yttrande-spår — styrelsens 
 
 ### Medlemsansökan
 
-Ny medlem söker inträde → styrelsebeslut. Stadgaförankring: medlemskriterier. Livscykel: `INSKICKAD → GRANSKAS → BESLUT (BIFALL / AVSLAG) → (ev. ÖVERKLAGAD_TILL_STÄMMA)`. **GDPR:** persondata under beredning är endast synlig för styrelsen. Avslag gallras efter 6 mån (Hemmet-default, rimlig utgångspunkt). **Ton:** välkomstmallar, avslag med saklig grund och besvärshänvisning. Stubb.
+Ny medlem söker inträde → styrelse- eller medlemsansvarig-beslut. Primärt för LEF (samfällighet triggas av ägarbyte, inte ansökan). Stadgaförankring: medlemskriterier. Livscykel, datauppsättning och gallringsregler specas i [medlemskap.md](medlemskap.md). **GDPR:** persondata under beredning är endast synlig för styrelsen. **Ton:** välkomstmallar, avslag med saklig grund och besvärshänvisning. Stubb — textbiblioteket utarbetas när ärendetypen fullt detaljeras.
 
 ### Uteslutningsärende
 

@@ -50,7 +50,7 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 - **Hur stödjs:** `RoleAssignment` på en styrelseledamot får en `memberApprovalAuthority`-flagga. Vid aktiv flagga får personen behörighet att skriva `MEDLEMSKAP_GODKÄNT` och `MEDLEMSKAP_AVSLAGET` utan styrelsebeslut — men alla sådana beslut läses av övriga styrelseledamöter och revisorn i granskningsloggen.
 - **Typiska mönster:** I samfälligheter är det vanligen ordföranden som registrerar ägarbyten. I LEF med formell ansökningsprocess behövs rollen ofta för att inte överbelasta styrelsemöten.
 - **Edition-avvikelser:** I samfällighet blir rollen mer av "ägarbytes-registrerare". I LEF med formell ansökningsprocess behövs den ofta för att inte överbelasta styrelsemöten.
-- **Hot att skydda:** Maktkoncentration — om medlemsansvarig ensidigt avslår eller godkänner utan spårbarhet. Mitigeras av att alla beslut är synliga för övriga styrelseledamöter och revisor i granskningsloggen; att eskalerings-tröskel finns; att mandatet kan återkallas av styrelsen.
+- **Hot att skydda:** Maktkoncentration — om medlemsansvarig ensidigt avslår eller godkänner utan spårbarhet. Mitigeras av att alla beslut är synliga för övriga styrelseledamöter och revisor i granskningsloggen; att eskalerings-tröskel finns; att mandatet kan återkallas av styrelsen. **Jäv:** obligatorisk jäv-deklaration vid varje godkännande/avslag — medlemsansvarig bekräftar aktivt att inget intressekopplat förhållande finns till sökanden. Vid jäv eskaleras ärendet till fullständig styrelse; detaljer i [medlemskap.md#delegerat-godkännande--medlemsansvarig](../medlemskap.md#delegerat-godkännande--medlemsansvarig).
 - **`[ÖPPEN]`:** Mandatets kvantitativa räckvidd (max antal beslut per period innan återrapportering)? Förslag: stadgan/föreningen bestämmer; systemet rapporterar siffror löpande oavsett.
 
 Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#delegerat-godkännande--medlemsansvarig) för processens helhet.
@@ -84,7 +84,7 @@ Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#del
 - **Terminologi per edition (via i18n):**
   - Samfällighet: **tomtägare** eller **sakägare**
   - LEF: **medlem**
-- **Livscykel:** `ACTIVE` / `LAPSED` / `EXCLUDED` — se [domain-model.md#medlemskapslivscykel](../domain-model.md#medlemskapslivscykel).
+- **Livscykel:** `AKTIV` / `VILANDE` / `UTESLUTEN` — se [domain-model.md#medlemskapslivscykel](../domain-model.md#medlemskapslivscykel).
 - **Edition-avvikelser:** Se respektive edition-fil. Samfällighet har `PropertyUnit` som bärare; LEF har `Member` direkt.
 - **Hot att skydda:** Asymmetrier i förberedelse/uttryck, informella anspråk ([threats.md](../threats.md)) — bas-rollens rättigheter är det som stämman i slutändan försvarar via stadgarna. Systemets transparens-defaults ger medlemmen lika mycket insyn som styrelsen vill medge ([mission.md](../mission.md)).
 

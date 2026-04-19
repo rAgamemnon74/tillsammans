@@ -43,7 +43,7 @@ Vid flera ägare (`Ownership`) stödjer systemet två modeller; stadgarna avgör
 
 ### Röstlängd — snapshot per fråga
 
-- Genereras vid kallelsetillfället från `ACTIVE`-medlemmar + relevant GA-medlemskap (för samfälligheter).
+- Genereras vid kallelsetillfället från `AKTIV`-medlemmar + relevant GA-medlemskap (för samfälligheter).
 - Är **fråge-specifik** i samfälligheter — olika GA har olika medlemsomfång (se [Domänmodell](domain-model.md#verkligt-exempel-användarens-egen-samfällighet): vattenföreningen med en exkluderad fastighet).
 - Fullmakter registreras före stämman och lagras tillsammans med röstlängden.
 - Dödsbon hanteras via Actor-modellens `representedBy`-fält.

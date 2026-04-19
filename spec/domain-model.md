@@ -56,11 +56,11 @@ Strukturell lösning: **medlemskap är aktivt, inte passivt.**
 
 ### Statusmodell
 
-- `ACTIVE` — full rösträtt, insyn och tillgång.
-- `LAPSED` — mjukt upphörande. Ingen rösträtt, ingen tillgång till aktuell data. Kan reaktiveras via ny bekräftelse (om kriterierna uppfylls).
-- `EXCLUDED` — hårt upphörande via styrelsebeslut med dokumenterat skäl. Bordläggs till stämman om medlemmen bestrider. Reaktivering kräver nytt stämmobeslut.
+- `AKTIV` — full rösträtt, insyn och tillgång.
+- `VILANDE` — mjukt upphörande. Ingen rösträtt, ingen tillgång till aktuell data. Kan reaktiveras via ny bekräftelse (om kriterierna uppfylls).
+- `UTESLUTEN` — hårt upphörande via styrelsebeslut med dokumenterat skäl. Bordläggs till stämman om medlemmen bestrider. Reaktivering kräver nytt stämmobeslut.
 
-### Triggers för `LAPSED`-övergång
+### Triggers för `VILANDE`-övergång
 
 Tre alternativa mekanismer stöds — föreningen väljer en (eller kombinerar) via stadgebeslut:
 
@@ -69,11 +69,11 @@ Tre alternativa mekanismer stöds — föreningen väljer en (eller kombinerar) 
 - **Samfällighet:** *"Jag är ägare till fastighet [X] per [datum]."* (eller dödsbo-representant, se Actor-modell).
 - **LEF:** enligt stadgarnas medlemskriterium.
 
-Uteblir bekräftelsen → automatisk övergång till `LAPSED`.
+Uteblir bekräftelsen → automatisk övergång till `VILANDE`.
 
-**2. Extern händelse (fakta-baserat).** `LAPSED` triggas när ett externt faktum ändras — t.ex. fastigheten såld enligt ägarbytesrapport. Enklare än årlig reconfirmation — ingen blankett behövs — men förutsätter att det externa faktumet är synligt för systemet (manuell uppdatering eller integration).
+**2. Extern händelse (fakta-baserat).** `VILANDE` triggas när ett externt faktum ändras — t.ex. fastigheten såld enligt ägarbytesrapport. Enklare än årlig reconfirmation — ingen blankett behövs — men förutsätter att det externa faktumet är synligt för systemet (manuell uppdatering eller integration).
 
-**3. Utebliven avgift (betalnings-baserat).** För LEF med årsavgift. Utebliven betalning vid påminnelse → `LAPSED`. Avgiften fungerar de facto som årlig aktivering.
+**3. Utebliven avgift (betalnings-baserat).** För LEF med årsavgift. Utebliven betalning vid påminnelse → `VILANDE`. Avgiften fungerar de facto som årlig aktivering.
 
 Föreningar kan kombinera: t.ex. extern händelse + reconfirmation vid varje ägarbyte.
 
@@ -83,10 +83,10 @@ Bevisbördan flyttas oavsett trigger: ingen behöver bevisa att någon *inte* ä
 
 Samma mönster som "Ni lovade"-flödet:
 
-1. Styrelsen slår upp i registret — person är `LAPSED` eller `EXCLUDED`.
+1. Styrelsen slår upp i registret — person är `VILANDE` eller `UTESLUTEN`.
 2. Hänvisar till stadgarna och reconfirmation-policy, inte till egen auktoritet.
 3. Om tvistigt: bordlägg till stämman — kollektivt majoritetsbeslut.
-4. Röstlängden för den stämman genereras från `ACTIVE`-snapshot vid kallelsetillfället. Personen röstar inte om sitt eget medlemskap.
+4. Röstlängden för den stämman genereras från `AKTIV`-snapshot vid kallelsetillfället. Personen röstar inte om sitt eget medlemskap.
 
 ### Historisk insyn bevaras
 
@@ -99,7 +99,7 @@ Samma mönster som "Ni lovade"-flödet:
 Systemet kan inte verifiera reconfirmation mot externa register (fastighetsregister är opålitligt, Lantmäteri-import är avvisad per [mission.md](mission.md)). En moraliskt flexibel medlem kan ljuga i sin bekräftelse. Men:
 
 - Lögnen är **signerad och tidsstämplad**.
-- När den avslöjas (andra medlemmar påpekar, annan kontext) har styrelsen dokumenterat underlag för `EXCLUDED` — och eventuellt för civilrättsliga åtgärder om ekonomisk skada uppstått.
+- När den avslöjas (andra medlemmar påpekar, annan kontext) har styrelsen dokumenterat underlag för `UTESLUTEN` — och eventuellt för civilrättsliga åtgärder om ekonomisk skada uppstått.
 - Kostnaden för att ljuga blir reell istället för gratis.
 
 ### `[ÖPPEN]` Actor-modell vs. User

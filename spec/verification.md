@@ -51,7 +51,7 @@ För varje hot i [hotbilden](threats.md), konstruera konkret attack och spåra d
 - Taktisk motionsgivning (10 motioner för förhandlingstryck) → formaliakraven avvisar eller grupperar?
 - Historierevision (*"det har vi alltid gjort"*) → audit-trail levererar motbevis?
 - Jäv som döljs som *"familjeaffär"* → obligatorisk deklaration + revisor-åtkomst fångar det?
-- Ex-ägare som hävdar kvarvarande rätt → aktivt medlemskap (`LAPSED`) avvisar?
+- Ex-ägare som hävdar kvarvarande rätt → aktivt medlemskap (`VILANDE`) avvisar?
 - Samägande som obstruktionsverktyg → UNIFIED/PROPORTIONAL-modellen hanterar?
 - **Passiv erosion efter personalväxling** — engagerad kohort cyklar ut, publiceringsrutiner faller → ärver efterträdaren ett sökbart arkiv eller ett frusen fragment? Fall: en av de verifierade föreningarna där öppen dokumentation de facto upphörde ~2020 när dåvarande styrelse gick vidare. Testet: är dokumentationen en *biprodukt* av systemet (överlever) eller en *manuell rutin* (dör med kohorten)?
 

@@ -21,7 +21,7 @@ Domänagnostisk kärna, samma kod oavsett `AssociationType`:
 - Jäv, bordläggning, "Ni lovade"-flödet
 - Stadge-modul + beslut↔paragraf-koppling
 - Kassörsstöd (utbetalning mot beslut + stadga, dokumenterar — utför inte)
-- Medlemsregister + medlemskapslivscykel (`ACTIVE`/`LAPSED`/`EXCLUDED`, reconfirmation)
+- Medlemsregister + medlemskapslivscykel (`AKTIV`/`VILANDE`/`UTESLUTEN`, reconfirmation)
 - Röstlängd-snapshot-mekanik
 - Revisorsstöd, valberedning, audit-trail
 - Kallelsemodell
