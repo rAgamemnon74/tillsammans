@@ -476,8 +476,7 @@ Client-genererat `event_id` (UUIDv7) + unique-constraint garanterar att retry ef
 
 ## Edition-hänsyn
 
-- **Samfällighet.** Debiteringslängden (lagkrav enligt LFS) är egen händelsetyp `DEBITERINGSLÄNGD_FASTSTÄLLD` vid varje stämma. Dess hash inkluderas i sigillets payload.
-- **Föräldraförening.** Brutet räkenskapsår (1/7–30/6) för skol-FF som följer läsår. Epokens datum styrs av stadgans räkenskapsår-inställning.
+- **Samfällighet.** Debiteringslängden (lagkrav enligt LFS) är egen händelsetyp `DEBITERINGSLÄNGD_FASTSTÄLLD` vid varje stämma. Dess hash inkluderas i sigillets payload. Räkenskapsår kan vara kalender, fritidshus-säsong eller annat stadgebestämt fönster.
 - **LEF.** Bolagsverket-inlämning av årsredovisning loggas som `DOKUMENT_BIFOGAT` (bilaga) med metadata + kvittensreferens, men är inte del av epok-sigillet — den är nästa-epok-händelse.
 
 ## Gränsdragningar — vad granskningsloggen inte är

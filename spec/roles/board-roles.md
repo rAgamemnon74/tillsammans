@@ -10,14 +10,14 @@ Styrelsen är föreningens verkställande organ — vald av stämman för att dr
 - [oversight-roles.md](oversight-roles.md) — revisor och revisorssuppleant (granskningsorgan)
 - [nominating-committee.md](nominating-committee.md) — valberedning (beredningsorgan)
 - [meeting-roles.md](meeting-roles.md) — flyktigt tillsatta mötesroller
-- [other-roles.md](other-roles.md) — firmatecknare, utskottsledamot, klassrepresentant, ExternalAdministrator, bas-medlem
+- [other-roles.md](other-roles.md) — firmatecknare, utskottsledamot, ExternalAdministrator, bas-medlem
 - [case-types.md](../case-types.md) — ärendetypernas livscykel refererar dessa roller i RBAC-tabeller
 - [core-concepts.md](../core-concepts.md) — reservation och solidariskt ansvar gäller alla styrelseledamöter
 
 ## Principer
 
 1. **Lag och stadga styr — inte teknik.** En roll är primär om lag eller stadgar behandlar den som distinkt (eget ansvar, egen jävsläge, egen signeringsrätt). Annars ligger den som attribut på en annan roll.
-2. **Typ-agnostisk kärna.** Rollnycklarna är identiska mellan `AssociationType`. Skillnader i vardag (debiteringslängd, klasskassa, servitut-hantering) sker via data och i18n — inte via typ-specifika rollnycklar. Brott mot detta är ett arkitekturläckage; se [architecture.md](../architecture.md).
+2. **Typ-agnostisk kärna.** Rollnycklarna är identiska mellan `AssociationType`. Skillnader i vardag (debiteringslängd, servitut-hantering, insats-administration) sker via data och i18n — inte via typ-specifika rollnycklar. Brott mot detta är ett arkitekturläckage; se [architecture.md](../architecture.md).
 3. **RBAC är minimalt explicit.** Varje roll har en kärn-permission-uppsättning som speglar dess lagstyrda ansvar. Finare behörigheter byggs av sammansättningar — inte av fler roller.
 4. **Solidariskt ansvar är synligt per ledamot.** Varje beslut loggar individuell position (ja/nej/nedlagd/reservation/frånvarande). Se [core-concepts.md#reservation-och-solidariskt-ansvar](../core-concepts.md#reservation-och-solidariskt-ansvar).
 5. **Vakanser är synliga.** Att en roll är vakant ska vara synligt i styrelsevyn, inte gömt.
@@ -39,7 +39,7 @@ Varje roll beskrivs med:
 - **Lag- och stadge-grund:** LEF 6:17, LFS 36§, föreningsstadgar. Nämns alltid explicit.
 - **Ansvar:** Leder styrelsen, kallar till möten, håller ordning på dagordningen, är oftast firmatecknare (se [other-roles.md#firmatecknare](other-roles.md)), representerar föreningen externt, har utslagsröst vid lika röstetal om stadgan så föreskriver.
 - **RBAC-kärna:** Kalla till styrelsemöte; godkänna dagordning; flytta ärenden till bordläggning eller stämma; signera kallelser; bekräfta protokoll efter justerare; utöva utslagsröst vid lika röstetal; se alla styrelsens arbetsytor.
-- **Edition-avvikelser:** I samfällighet primärrollen mot sakägartvister ([audience.md](../audience.md)). I föräldraförening mindre exponerad än kassör. I LEF varierar; sätts vid onboarding.
+- **Edition-avvikelser:** I samfällighet primärrollen mot sakägartvister ([audience.md](../audience.md)). I LEF varierar; sätts vid onboarding.
 - **Hot att skydda:** Asymmetrier i förberedelse/uttryck ([threats.md](../threats.md)), informella anspråk och påtryckningar mellan möten, solidariskt ansvar som aktualiseras vid rättsprocess.
 
 ## Vice ordförande
@@ -67,8 +67,8 @@ Varje roll beskrivs med:
 - **Lag- och stadge-grund:** Bokföringslagen (där föreningen är bokföringsskyldig), föreningsstadgar.
 - **Ansvar:** Ekonomiförvaltning, kopplingen beslut → utbetalning, bokföringsunderlag, debiteringslängd (samfällighet — lagkrav enligt LFS).
 - **RBAC-kärna:** Godkänna utläggsärenden ([case-types.md](../case-types.md)); se alla beslut med ekonomisk konsekvens; generera debiteringslängd / budget-rapporter; exportera till bokföringssystem; skriva i kassaflödesvyn; läs alla styrelsebeslut.
-- **Edition-avvikelser:** I samfällighet bär kassören den juridiskt snåriga debiteringslängden ([editions/samfallighet.md](../editions/samfallighet.md)). I föräldraförening bär kassören klasskassan, strukturerade eventfonden och swish-dokumentationen — social misstro är primärhotet ([audience.md](../audience.md)). I LEF är bokföringslagens krav mest uttalade.
-- **Hot att skydda:** Ekonomisk misstro (föräldraförening), juridisk komplexitet vid debiteringslängden (samfällighet), jäv vid utläggsgodkännande till egen räkning. Kassör kan inte godkänna sitt eget utlägg — se analys-reglerna ([analysis-rules.md](../analysis-rules.md) grupp 5).
+- **Edition-avvikelser:** I samfällighet bär kassören den juridiskt snåriga debiteringslängden ([editions/samfallighet.md](../editions/samfallighet.md)). I LEF är bokföringslagens krav mest uttalade.
+- **Hot att skydda:** Juridisk komplexitet vid debiteringslängden (samfällighet), jäv vid utläggsgodkännande till egen räkning. Kassör kan inte godkänna sitt eget utlägg — se analys-reglerna ([analysis-rules.md](../analysis-rules.md) grupp 5).
 
 ## Ledamot
 
@@ -114,7 +114,6 @@ Denna tabell är en orientering, inte en fullständig permission-modell. Kolumn-
 - **Mötesordförande, mötessekreterare, protokolljusterare, rösträknare** → [meeting-roles.md](meeting-roles.md). Väljs per stämma och kan sammanfalla med styrelseroller men är formellt separata.
 - **Firmatecknare** → attribut på en eller flera styrelseledamöter; [other-roles.md#firmatecknare](other-roles.md#firmatecknare). Inte egen post även om stadgan säger *"firma tecknas av ordförande och kassör var för sig"*.
 - **Utskotts-/kommittéordförande** → attribut inom ett utskott; [other-roles.md#utskotts-och-kommittéledamot](other-roles.md#utskotts-och-kommittéledamot).
-- **Klassrepresentant** (föräldraförening) → attribut på en medlem; [other-roles.md#klassrepresentant](other-roles.md#klassrepresentant). Inte styrelsepost.
 
 ## Läsrätt efter mandatet
 
@@ -127,6 +126,6 @@ Principen är tvärgående över alla förtroendevalda roller och beskrivs i [f�
 Utöver de `[ÖPPEN]` som markerats per roll:
 
 - **Vice-typer vid frånvaro** — ska systemet föreslå suppleant/vice automatiskt när ordinarie markeras frånvarande, eller ska aktivering vara manuell? Förslag: manuell aktivering loggad i protokollet, så att *"har suppleanten röstat"* alltid är ett explicit beslut.
-- **Flera roller på samma person** — en kassör kan också vara ledamot (är det automatiskt?); en styrelseledamot kan även vara klassrepresentant. Ska systemet tillåta rollsammanslagning (en person, flera rolltillstånd)? Förslag: roller är distinkta tilldelningar; en person har uppsättningen `{kassör, ledamot}` och rösträtt från *ledamot*-rollen, inte dubbel-röst.
+- **Flera roller på samma person** — en kassör kan också vara ledamot (är det automatiskt?); en styrelseledamot kan även vara firmatecknare. Ska systemet tillåta rollsammanslagning (en person, flera rolltillstånd)? Förslag: roller är distinkta tilldelningar; en person har uppsättningen `{kassör, ledamot}` och rösträtt från *ledamot*-rollen, inte dubbel-röst.
 - **Mandatperiod som data** — är start- och slutdatum per roll eller per person-i-roll? Förslag: per tilldelning (`RoleAssignment` med `startAt`/`endAt`), där rollen själv är tidlös.
 - **Kombinationsförbud mellan styrelse och granskning/valberedning** — systemet ska förhindra att samma person tilldelas både styrelseledamot och revisor samtidigt (konstitutionellt oförenligt). Valberedning är mjukare — tekniskt tillåtet men flaggas vid tilldelning; självnominering flaggas vid förslagspublicering. Se [oversight-roles.md#principer](oversight-roles.md) och [nominating-committee.md#principer](nominating-committee.md).

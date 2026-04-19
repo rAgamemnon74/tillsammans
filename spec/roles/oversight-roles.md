@@ -26,9 +26,8 @@ En revisor kan per definition inte vara styrelseledamot i samma förening — de
 - **Ansvar:** Granska räkenskaper och styrelsens förvaltning för det gångna räkenskapsåret. Avlämna revisionsberättelse till stämman med till- eller avstyrkan av ansvarsfrihet för styrelsen.
 - **RBAC-kärna:** Permanent läsrätt — all ekonomi, alla styrelsebeslut, alla jävsdeklarationer, hela audit-trail, alla utläggsärenden, dokumentarkivet, kallelsematerial. Ingen skrivrätt utöver egna revisorsfrågor och revisionsberättelse ([case-types.md](../case-types.md)).
 - **Edition-avvikelser:**
-  - **Samfällighet:** lekmanna-revisor dominerar (0 auktoriserade i 10 observerade, se [verification-reports/samfalligheter-2026-04.md](../verification-reports/samfalligheter-2026-04.md)).
+  - **Samfällighet:** lekmanna-revisor dominerar (0 auktoriserade i 10 observerade, se [verification-reports/samfalligheter-2026-04.md](../verification-reports/samfalligheter-2026-04.md)). Löpande läsrätt förverkligas som default — flera stadgar föreskriver *"fritt tillträde till föreningens protokoll, korrespondens och räkenskaper närhelst de så påkallar"*.
   - **LEF:** auktoriserad revisor kan krävas över vissa tröskelvärden för omsättning, tillgångar eller anställda.
-  - **Föräldraförening:** typiskt lekmanna, ofta en förälder som inte är styrelseledamot. Backatorp §9 föreskriver *"fritt tillträde till föreningens protokoll, korrespondens och räkenskaper närhelst de så påkallar"* — systemet förverkligar det som default.
 - **Hot att skydda:** Uppdraget *är* skyddsmekanismen. Systemet får inte skapa friktion som skrymmer granskningen; data ska finnas där löpande.
 
 ## Revisorssuppleant
@@ -66,4 +65,4 @@ Detta är ett konkret fall av den generella principen att tidigare förtroendeva
 - **Närståendekontroller.** Systemet vet inte automatiskt om en revisor är släkt eller nära affärspartner till en styrelseledamot. Förslag: begär aktiv deklaration vid revisors-tilldelning, jämförbart med jävsdeklaration.
 - **Auktoriserad revisor och revisionsbyrå.** När en auktoriserad revisor representerar en byrå blir rollen knuten till byrån, inte enbart individen — handläggare kan byta. Modelleras som `ExternalAudit`-organisation med aktiva representanter, analogt med `ExternalAdministrator` ([other-roles.md#externaladministrator](other-roles.md#externaladministrator)). `[ÖPPEN]`.
 - **Revisionsberättelse-signering.** BankID-krav för signering? Kopplas till [open-questions.md#öppen-autentisering](../open-questions.md).
-- **Revisor från annan förening.** Flera skol-FF har revisor från moderföreningen eller kooperativet. Hur modelleras revisor som tillhör en extern entitet? Förslag: tillåt extern revisor men kräv att kontaktuppgifter finns i systemet för kallelse-flöden.
+- **Revisor från annan förening.** Vissa föreningar har revisor från en närstående organisation. Hur modelleras revisor som tillhör en extern entitet? Förslag: tillåt extern revisor men kräv att kontaktuppgifter finns i systemet för kallelse-flöden.

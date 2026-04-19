@@ -56,7 +56,7 @@ Stadge-output är en pdf/signeringsbar text som motsvarar normalstadgorna med va
 
 ### Äldre samfälligheter — stadga laddas in som kopia
 
-Samfälligheter bildade före 2000-talet har ofta 20+ år gamla stadgar som motsvarar ett pappersoriginal. Onboarding ska låta föreningen *ladda upp sin existerande stadga* utan att "moderniseras" — spec-modellen ([verification.md](../verification.md) Spår 2, scenario 11). Systemet behandlar den uppladdade stadgan som sanning, även om den avviker från dagens normalstadga.
+Samfälligheter bildade före 2000-talet har ofta 20+ år gamla stadgar som motsvarar ett pappersoriginal. Onboarding ska låta föreningen *ladda upp sin existerande stadga* utan att "moderniseras" — se [verification.md](../verification.md) Spår 2, scenario 11. Systemet behandlar den uppladdade stadgan som sanning, även om den avviker från dagens normalstadga.
 
 ## Röstmodeller
 

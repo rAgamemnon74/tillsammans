@@ -14,7 +14,7 @@ User ↔ Ownership ↔ PropertyUnit ↔ Participation ↔ GA (Asset) ↔ Associa
 - `User` — auth, identitet, närvaro, signaturer, jävsdeklarationer
 - `PropertyUnit` — fastigheten, bär olika deltagande i olika GA
 - `Ownership` — User ↔ PropertyUnit (flera ägare per fastighet, flera fastigheter per person)
-- `Association` — föreningen (samfällighet, föräldraförening, LEF)
+- `Association` — föreningen (samfällighet eller LEF)
 - `GA` (Asset) — gemensamhetsanläggning (väg, vatten, brygga, allmänning)
 - `Participation` — PropertyUnit ↔ GA med andelstal och rättighetstyp
 
@@ -32,7 +32,7 @@ Slutsats: `Participation` är central — det är inte en flagga, det är en rel
 
 ## Medlemsmodell per föreningstyp
 
-Medlemsregistret ser fundamentalt olika ut för de tre målgrupperna — formalisnivån och livscykeln skiljer sig.
+Medlemsregistret ser olika ut för de två målgrupperna — formalisnivån och livscykeln skiljer sig.
 
 ### Samfälligheter — fastighetsanknutet, informellare än BRF
 
@@ -42,28 +42,15 @@ Medlemsregistret ser fundamentalt olika ut för de tre målgrupperna — formali
 - Kassören behöver kunna fakturera rätt part även när formell ägare är oklar — fältet `faktureringsmottagare` måste kunna avvika från `ägare`.
 - Uppdatering sker ofta *reaktivt* (vid stämman, vid faktureringsomgång) snarare än realtid.
 
-### Föräldraföreningar — vårdnadshavare, minimal barndata
-
-Datastruktur: `Parent (medlem) → Child → Class → Association`.
-
-- **Medlem = vårdnadshavaren**, inte eleven. Vårdnadshavaren är myndig och avtalsbehörig — eleven är bärare av klasstillhörighet.
-- **Minimera barnuppgifter:** förnamn + klassbeteckning räcker. Inget personnummer, ingen födelsedatum, ingen övrig data. GDPR-principen "dataminimering" är särskilt viktig för minderåriga.
-- `Class` kan bära sin egen klasskassa som delmängd av föreningens ekonomi — kassören ser pott per klass.
-- **Onboarding via självregistrering**, inte integration med skolregister:
-  - Skolan är personuppgiftsansvarig för elevdata och har varken rätt eller praktisk möjlighet att dela register.
-  - Skolans system (Infomentor, SchoolSoft, Vklass, Unikum) är fragmenterade utan tredje parts-API.
-  - Rektorns roll är på sin höjd att distribuera registreringslänk — inte att skicka data.
-  - Länk + BankID → vårdnadshavaren lägger till sina barn själv.
-
 ### Övriga LEF — formell medlemsprövning
 
 - Styrelsen prövar inträde enligt stadgarna (LEF 4:2).
 - Formell in/ut-logg med datum, skäl.
 - Närmast BRF-modellen i struktur, men utan lägenhetskopplingen.
 
-## Medlemskapslivscykel — avslut och tvister
+## Medlekapslivscykel — avslut och tvister
 
-Föreningar utan automatisk avregistrerings-trigger (främst föräldraföreningar, men även samfälligheter vid ägarbyten som ej rapporterats) möter ett gemensamt problem: **ex-medlemmar som fortsätter hävda medlemsrätt**. Föräldrar vars barn lämnat skolan, ex-ägare som flyttat, dödsbon vars arvskifte genomförts — alla kan ligga kvar i registret i åratal om systemet bygger på passivt medlemskap.
+Föreningar utan automatisk avregistrerings-trigger (främst samfälligheter vid ägarbyten som ej rapporterats, samt LEF med passiva medlemmar som inte formellt utträtt) möter ett gemensamt problem: **ex-medlemmar som fortsätter hävda medlemsrätt**. Ex-ägare som flyttat, dödsbon vars arvskifte genomförts — alla kan ligga kvar i registret i åratal om systemet bygger på passivt medlemskap.
 
 Strukturell lösning: **medlemskap är aktivt, inte passivt.**
 
@@ -79,17 +66,16 @@ Tre alternativa mekanismer stöds — föreningen väljer en (eller kombinerar) 
 
 **1. Årlig reconfirmation (tidsbaserat).** Medlemskap löper 1 år i taget och kräver aktiv bekräftelse av medlemskapskriteriet.
 
-- **Föräldraförening:** *"Jag är vårdnadshavare till [barn] i klass [Y] på [skola] per [datum]."*
 - **Samfällighet:** *"Jag är ägare till fastighet [X] per [datum]."* (eller dödsbo-representant, se Actor-modell).
 - **LEF:** enligt stadgarnas medlemskriterium.
 
 Uteblir bekräftelsen → automatisk övergång till `LAPSED`.
 
-**2. Extern händelse (fakta-baserat).** `LAPSED` triggas när ett externt faktum ändras — t.ex. barnet ej längre inskriven i skolan, fastigheten såld enligt ägarbytesrapport. Empiriskt mönster: **Backatorpsskolans FF §2** (*"Medlemskapet upphör då medlemmen ej längre är vårdnadshavare till barn som är inskrivna på skolan"*). Enklare än årlig reconfirmation — ingen blankett behövs — men förutsätter att det externa faktumet är synligt för systemet (manuell uppdatering per termin eller integration).
+**2. Extern händelse (fakta-baserat).** `LAPSED` triggas när ett externt faktum ändras — t.ex. fastigheten såld enligt ägarbytesrapport. Enklare än årlig reconfirmation — ingen blankett behövs — men förutsätter att det externa faktumet är synligt för systemet (manuell uppdatering eller integration).
 
-**3. Utebliven avgift (betalnings-baserat).** För föreningar med årsavgift (Nya Elementar-mönstret). Utebliven betalning vid påminnelse → `LAPSED`. Avgiften fungerar de facto som årlig aktivering.
+**3. Utebliven avgift (betalnings-baserat).** För LEF med årsavgift. Utebliven betalning vid påminnelse → `LAPSED`. Avgiften fungerar de facto som årlig aktivering.
 
-Föreningar kombinerar ofta: t.ex. extern händelse (automatisk avregistrering när barnet slutar) + reconfirmation vid varje ägarbyte. Se [editions/foraldraforening.md#val-av-trigger-för-lapsed](editions/foraldraforening.md#val-av-trigger-för-lapsed).
+Föreningar kan kombinera: t.ex. extern händelse + reconfirmation vid varje ägarbyte.
 
 Bevisbördan flyttas oavsett trigger: ingen behöver bevisa att någon *inte* är medlem. Medlemmen — eller det externa faktumet — bevisar att de *är*.
 
@@ -110,7 +96,7 @@ Samma mönster som "Ni lovade"-flödet:
 
 ### Ärlig begränsning
 
-Systemet kan inte verifiera reconfirmation mot externa register (skol-integration är avvisad, fastighetsregister är opålitligt). En moraliskt flexibel medlem kan ljuga i sin bekräftelse. Men:
+Systemet kan inte verifiera reconfirmation mot externa register (fastighetsregister är opålitligt, Lantmäteri-import är avvisad per [mission.md](mission.md)). En moraliskt flexibel medlem kan ljuga i sin bekräftelse. Men:
 
 - Lögnen är **signerad och tidsstämplad**.
 - När den avslöjas (andra medlemmar påpekar, annan kontext) har styrelsen dokumenterat underlag för `EXCLUDED` — och eventuellt för civilrättsliga åtgärder om ekonomisk skada uppstått.

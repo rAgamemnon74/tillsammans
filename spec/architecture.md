@@ -8,7 +8,7 @@
 
 > Förtroendevald-rollerna är extremt lika mellan föreningstyperna. Det operationella stödet skiljer sig enormt — både *mellan* typer och *inom* samma typ.
 
-Styrelsens vardag — möten, beslut, jäv, protokoll, utbetalningar mot beslut, revisorsgranskning, röstlängd, bordläggning — är nästan identisk oavsett om föreningen förvaltar en skogsväg, en klasskassa eller en ekonomisk förening. Det operativa — vad föreningen faktiskt *gör* mellan mötena — divergerar så kraftigt att varje försök att bygga gemensamma operativa moduler skulle drunkna i undantag.
+Styrelsens vardag — möten, beslut, jäv, protokoll, utbetalningar mot beslut, revisorsgranskning, röstlängd, bordläggning — är nästan identisk oavsett om föreningen förvaltar en skogsväg, en vattenanläggning eller en ekonomisk förening. Det operativa — vad föreningen faktiskt *gör* mellan mötena — divergerar så kraftigt att varje försök att bygga gemensamma operativa moduler skulle drunkna i undantag.
 
 **Slutsats:** Tillsammans bygger *bara* governance-kärnan. Operativa behov löses med befintliga verktyg.
 
@@ -31,7 +31,7 @@ Domänagnostisk kärna, samma kod oavsett `AssociationType`:
 - Underfonder inom föreningens ekonomi (fördelningsregel, beslutsgång, tak/golv, konfidentialitetsnivå)
 - Huvudmanna-relation: förening som formell intressent i extern juridisk person (utser ledamot till stiftelse/ab som driver verksamheten)
 - Räkenskapsår-konfiguration (kalender 1/1–31/12, brutet läsårsföljande 1/7–30/6, eller stadgebestämt annat fönster)
-- Extern administratör (`ExternalAdministrator`) — tidsbegränsad RBAC-roll för extern part som sköter delar av ekonomin (HSB, ekonomibyrå). Stadge-/avtalsbestämt scope (bokföring / fakturering / årsredovisning / hela). Läs/skriv-rättigheter mot ekonomiska vyer, läsrätt övrigt, **inget beslutsmandat** — alla beslut ligger kvar på styrelsen. Empiriskt vanligt i samfälligheter (Kyrkmossen→HSB, Fröåvägen→CarLe Ekonomi); förekommer även i skol-FF utan egen kassör.
+- Extern administratör (`ExternalAdministrator`) — tidsbegränsad RBAC-roll för extern part som sköter delar av ekonomin (HSB, ekonomibyrå). Stadge-/avtalsbestämt scope (bokföring / fakturering / årsredovisning / hela). Läs/skriv-rättigheter mot ekonomiska vyer, läsrätt övrigt, **inget beslutsmandat** — alla beslut ligger kvar på styrelsen. Empiriskt vanligt i samfälligheter (Kyrkmossen→HSB, Fröåvägen→CarLe Ekonomi).
 
 ### Utanför scope (externa verktyg)
 
@@ -50,9 +50,9 @@ Explicit avgränsat bort — finns redan och skiljer sig för mycket per föreni
 
 `AssociationType` styr konfiguration, inte kod-förgreningar i kärnlogik:
 
-- **Onboarding-wizarden** forkar per typ (manuell digital tvilling för samfällighet, BankID-självregistrering för föräldraförening).
-- **Terminologi-lager** (i18n-liknande) mappar generiska termer till typ-specifika: `medlem` → *tomtägare* / *vårdnadshavare* / *medlem*.
-- **Domänmodellen** varierar per typ (PropertyUnit+GA+Participation för samfällighet, Parent+Child+Class för föräldraförening) — men varje typ har en komplett, integrerad modell, inte en hybrid.
+- **Onboarding-wizarden** forkar per typ (manuell digital tvilling för samfällighet, formell ansökan-flöde för LEF).
+- **Terminologi-lager** (i18n-liknande) mappar generiska termer till typ-specifika: `medlem` → *tomtägare* / *sakägare* / *medlem*.
+- **Domänmodellen** varierar per typ (PropertyUnit+GA+Participation för samfällighet; renare `Member`-modell för LEF) — men varje typ har en komplett, integrerad modell, inte en hybrid.
 - **Röstmetod-defaults** och **stadgemallar** levereras per typ.
 
 **Designregel:** kärnans governance-flöden (möte, beslut, jäv, bordläggning, kassör, röstlängd) får inte innehålla `if (associationType === 'X')`. Typ-specifikt beteende pressas ned i data (konfiguration) eller upp i presentation (terminologi) — aldrig i själva governance-logiken. Om kärnan börjar grena på typ har vi ett läckage att åtgärda.

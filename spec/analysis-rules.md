@@ -47,7 +47,6 @@ Tillsammans försvarar mot specifika governance-risker ([threats.md](threats.md)
 
 - **Minsta nödvändiga data.** Kräver funktionen mer persondata än den faktiskt behöver för sitt syfte?
 - **Roll-baserad filtrering.** Filtreras personuppgifter per roll på serversidan, eller litar funktionen på klientens presentation?
-- **Föräldraförening-särskillnad.** Om funktionen hanterar data om minderåriga eller vårdnadshavare — är konfidentialiteten tydligt starkare än för en samfällighet? Kan texten läsas av barnet utan skada?
 - **Gallring.** Har funktionens data en definierad gallringspunkt kopplad till ärendets livscykel?
 
 ## 8. Ton och kommunikation

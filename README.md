@@ -1,6 +1,6 @@
 # Tillsammans
 
-**Open source-plattform för föreningsdemokrati i Sverige** — samfälligheter, ekonomiska föreningar och föräldraföreningar.
+**Open source-plattform för föreningsdemokrati i Sverige** — samfälligheter och övriga ekonomiska föreningar (LEF).
 
 Kärnfokus: *governance-sköld*. Tillsammans kodifierar demokratiska processer så att enskilda påverkansförsök, informella överenskommelser och asymmetrier mellan medlem och styrelse inte kan leda till beslut som avviker från majoritet och stadgar. Försäljningsargumentet är **beslutstrygghet** — inte fastighetsadministration, inte bokningssystem, inte bokföring.
 
@@ -12,15 +12,14 @@ Ingångspunkten är [`tillsammans.md`](tillsammans.md) — innehållsregister me
 
 ## Varför ännu en föreningsplattform?
 
-Den svenska föreningsmarknaden är delvis täckt (HSB/Riksbyggen för BRF, SportAdmin för idrottsklubbar), men tre stora kategorier saknar governance-bärigt stöd:
+Den svenska föreningsmarknaden är delvis täckt (HSB/Riksbyggen för BRF, SportAdmin för idrottsklubbar), men två stora kategorier saknar governance-bärigt stöd:
 
 - **Samfällighetsföreningar** — gemensamhetsanläggningar med andelstal, anläggningslagen, ofta utsatta för "granne-politik" kring vägar och bryggor.
-- **Föräldraföreningar** — klasskassor och skol-fonder där kassören bär ekonomisk misstro ensam.
 - **Övriga ekonomiska föreningar** — LEF-styrda föreningar med compliance-krav men utan specialiserat verktyg.
 
-Plattformen är uttryckligen **typ-agnostisk i kärnan** och **typ-anpassad i terminologi, defaults och onboarding**. Samma kod, tre editions: *Tillsammans för samfälligheter*, *Tillsammans för föräldraföreningar*, *Tillsammans för LEF*.
+Plattformen är uttryckligen **typ-agnostisk i kärnan** och **typ-anpassad i terminologi, defaults och onboarding**. Samma kod, två editions: *Tillsammans för samfälligheter*, *Tillsammans för LEF*.
 
-BRF är inte målgruppen — systerprojektet [Hemmet](https://github.com/rAgamemnon74/hemmet) täcker den domänen.
+BRF och föräldraföreningar är inte målgrupper — systerprojekten [Hemmet](https://github.com/rAgamemnon74/hemmet) (BRF) och [Framtiden](../framtiden) (föräldraföreningar, knoppat av från Tillsammans april 2026) täcker de domänerna.
 
 ## Governance-principer
 
@@ -49,8 +48,9 @@ Tillsammans bygger **bara governance-kärnan**. Operativa behov skiljer sig för
 | Edition | Primärrisk | Mest exponerad roll | Status |
 |---|---|---|---|
 | [Samfälligheter](spec/editions/samfallighet.md) | Governance-attacker (bryggkrig, vägpolitik) | Ordförande + kassör parallellt | Verifierad apr 2026 (10 föreningar) |
-| [Föräldraföreningar](spec/editions/foraldraforening.md) | Ekonomisk misstro (klasskassa) | Kassör | Verifierad apr 2026 (12 föreningar) |
 | Övriga ekonomiska föreningar (LEF) | Varierar | Beror på förening | Verifikation pågår |
+
+Föräldraföreningar bröts ut till [Framtiden](../framtiden) april 2026 — verifikations-rapporten för 12 svenska föräldraföreningar flyttades dit.
 
 ## Teknik
 
@@ -88,4 +88,4 @@ Fullständig bidragsguide kommer när community-sektionen i `mission.md` är fä
 
 ## Licens
 
-MIT. Samma som [Hemmet](https://github.com/rAgamemnon74/hemmet). Öppen källkod är inte hygien här — det är själva governance-löftet.
+MIT. Samma som [Hemmet](https://github.com/rAgamemnon74/hemmet) och [Framtiden](../framtiden). Öppen källkod är inte hygien här — det är själva governance-löftet.

@@ -18,13 +18,12 @@ Nyckelinsikt: styrelsen flyttar ansvaret från personlig konflikt till kollektiv
 
 **Generella röstmetoder:**
 
-- **Huvudmetod** — en enhet (medlem/fastighet/barn), en röst.
+- **Huvudmetod** — en enhet (medlem/fastighet), en röst.
 - **Andelsmetod** — viktad efter andelstal för den specifika gemensamhetsanläggningen som frågan rör.
 - Valet görs **per beslutstyp** (inte per förening). Vägfråga kan använda väg-GA:s andelstal; stadgeändring kan kräva huvudmetod.
 
 **Defaults per `AssociationType`:**
 
-- **Föräldraförening:** default "1 medlem = 1 röst" (enkel huvudmetod i linje med LEF 6:3). Andra röstmodeller — "1 familj", "båda föräldrar som separata medlemmar", eller "1 barn splittat på närvarande vårdnadshavare" — finns som stadge-alternativ. Se [editions/foraldraforening.md#röstmodeller](editions/foraldraforening.md#röstmodeller) för empirisk bakgrund (12 föreningar jämförda 2026-04).
 - **Samfällighet:** **huvudmetod som grundregel enligt SFL 49§** (1 medlem = 1 röst). Vid ekonomisk fråga kan medlem begära andelstalsmetod — då tillämpas `Participation.andelstal` för den frågan, med tak `voteCapPerMember = 0.2` (ingen medlem får rösta med mer än 1/5 av totala röstetalet, SFL 49§). Stadgeändring och andra LFS-tvingade frågor använder alltid huvudmetod (SFL 52§). Se [editions/samfallighet.md#röstmodeller](editions/samfallighet.md#röstmodeller) för empirisk bakgrund (10 föreningar jämförda 2026-04).
 - **LEF:** huvudmetod enligt LEF 6:3, andelsmetod endast om stadgarna uttryckligen säger det.
 
@@ -32,32 +31,6 @@ Nyckelinsikt: styrelsen flyttar ansvaret från personlig konflikt till kollektiv
 
 - `voteCapPerMember` — tak för andelstal-röster per medlem (default 0.2 för samfällighet enligt SFL 49§; ej satt för övriga). Skyddar mot att enskild stor fastighetsägare dominerar beslutet.
 - `maxProxiesPerAgent` — max antal medlemmar ett ombud får företräda (default 1 enligt SFL 49§ för samfällighet; varierar för övriga typer). Fullmakt är alltid skriftlig och registreras före stämman.
-
-### Alternativ röstmodell för föräldraförening: `PER_CHILD_SPLIT`
-
-> **Ej default.** Ingen av 12 observerade svenska föräldraföreningar (apr 2026, se [verification-reports/foraldraforeningar-2026-04.md](verification-reports/foraldraforeningar-2026-04.md#mönster-2--röstregel-största-spec-avvikelsen)) använder denna modell. Dokumenterad som tekniskt alternativ för föreningar som explicit väljer den via stadgeändring; den är mer jämlik per barn (skyddar ensamstående mot kärnfamiljs övervikt) men avviker från etablerad praxis.
-
-Röstlängden är per `Child`, inte per `Parent`. Total röstvikt per barn är alltid 1.0, oavsett antal vårdnadshavare närvarande.
-
-**Regeln:** varje närvarande vårdnadshavare får vikten `1/N` per barn, där `N` = antal närvarande vårdnadshavare för det barnet.
-
-| Situation | Resultat |
-|---|---|
-| 1 vårdnadshavare närvarande (av registrerade) | 1.0 röst, avgivs av den närvarande |
-| 2 vårdnadshavare närvarande, eniga | 0.5 + 0.5 = 1.0 på samma alternativ |
-| 2 vårdnadshavare närvarande, oense | 0.5 på varje sida = netto 0 på beslutsfrågan |
-| 2 närvarande, en röstar, en avstår | 0.5 på röstat alternativ |
-| 3+ personer hävdar rösträtt för samma barn | Hanteras inte av systemet — se röstlängdsetablering nedan |
-
-Juridiskt kan ett barn ha max 2 vårdnadshavare enligt FB 6:2 — N ∈ {1, 2} i normalfall. Systemet tillåter inte fler än 2 registrerade vårdnadshavare per barn.
-
-**Varför proportionell splittning istället för "ingen röst vid oenighet":**
-
-- Systemet behöver ingen särskild oenighet-detektering — splittningen är regeln, matematiken löser resten.
-- Färre jämna omröstningar → färre tillfällen där ordföranden måste lägga utslagsröst.
-- Varje vårdnadshavare har reell agency över barnets röst — ingen "låses ut" av den andras beslut.
-
-**Stadgarna kan ändra regeln** (t.ex. föreskriva en "primär vårdnadshavare" som avger rösten ensam) eller aktivera `PER_CHILD_SPLIT` helt.
 
 ### Samfällighet — andelstal per fastighet
 
@@ -83,9 +56,8 @@ Röstlängden är ett snapshot vid kallelse, men **slutgiltig etablering sker n�
 - **Fullmaktskontroll** — presenterade fullmakter granskas och loggas.
 - **Representationsfrågor** — vem röstar för samägd fastighet / dödsbo / juridisk person?
 - **Mandatverifiering för juridisk person** — representantens bemyndigande (Bolagsverket-utdrag, fullmakt, styrelseprotokoll, delegationsordning) granskas av mötesordförande eller särskilt utsedd person. Mandat som är för gamla, oklara eller tvistiga kan föranleda att mötesordföranden begär nytt dokument eller att representationen inte godkänns för just denna stämma. Vid *"i förening"*-mandat krävs närvaro av samtliga representanter för att rösten ska kunna avges. Se [medlemskap.md#juridisk-person-som-medlem](medlemskap.md#juridisk-person-som-medlem).
-- **Vårdnadshavare-oklarheter** — om någon utöver registrerade vårdnadshavare hävdar rösträtt för ett barn.
 
-**Principen: Tillsammans löser inga civilrättsliga tvister — föreningen ska kunna komma vidare.** Oklara fall dokumenteras (vem hävdade vad, varför), rösten för den fastigheten/barnet avges inte den stämman, parterna hänvisas till rätt forum (domstol, familjerätt, Lantmäteri). Sedan kör stämman vidare på de klara fallen.
+**Principen: Tillsammans löser inga civilrättsliga tvister — föreningen ska kunna komma vidare.** Oklara fall dokumenteras (vem hävdade vad, varför), rösten för den fastigheten avges inte den stämman, parterna hänvisas till rätt forum (domstol, Lantmäteri). Sedan kör stämman vidare på de klara fallen.
 
 Detta är värdefullt: utan denna princip kan en enskild tvist låsa hela stämman. *"Kom vidare"* är ett försvar mot obstruktion.
 
@@ -128,7 +100,7 @@ Denna mekanism är inte bara teknisk. Den är **kulturell**: systemet gör skill
 
 Lagen om ekonomiska föreningar har tvingande krav på kallelsetider och underlag. Systemet ska:
 
-- Känna till stadgarnas krav som både **min-gräns** (typiskt 2v före stämma, 1v för extra stämma) **och max-gräns** (t.ex. 4-6v). Max-gränsen skyddar inte bara mot för tidig kallelse utan mot "glömska" — kallelse 3 månader i förväg och medlem missar mötet helt. Minigiraffen §17 har 6v som max; empiriskt validerat i [verification-reports/foraldraforeningar-2026-04.md#mönster-4--kallelsetid](verification-reports/foraldraforeningar-2026-04.md#mönster-4--kallelsetid).
+- Känna till stadgarnas krav som både **min-gräns** (typiskt 2v före stämma, 1v för extra stämma) **och max-gräns** (t.ex. 4-6v). Max-gränsen skyddar inte bara mot för tidig kallelse utan mot "glömska" — kallelse 3 månader i förväg och medlem missar mötet helt. Empiriskt validerat för samfälligheter (Torpa Skogs *"tidigast 4 och senast 2 veckor"*, se [verification-reports/samfalligheter-2026-04.md#mönster-7--kallelsetid](verification-reports/samfalligheter-2026-04.md#mönster-7--kallelsetid)).
 - Räkna baklänges från mötesdatum och räkna fram sista dag för kallelse, sista dag för tillgängligt underlag.
 - Logga att kallelsen "anslagits" digitalt — bevisvärde om någon hävdar att de inte kallats.
 

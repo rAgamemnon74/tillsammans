@@ -23,7 +23,7 @@ En valberedningsledamot bör inte samtidigt vara styrelseledamot. Självnomineri
 ## Valberedningsledamot
 
 - **Stödnivå:** primär.
-- **Lag- och stadge-grund:** Föreningsstadgar. Obligatorisk i alla observerade föreningar (12 föräldraföreningar + 10 samfälligheter).
+- **Lag- och stadge-grund:** Föreningsstadgar. Obligatorisk i alla observerade samfälligheter (10 föreningar, apr 2026).
 - **Ansvar:** Tillsammans med övriga valberedningsledamöter — inventera sittande förtroendevalda, intervjua kandidater, föreslå en samlad valslista till stämman.
 - **RBAC-kärna:**
   - Läsrätt på medlemsregistret (namn + kontakt; GDPR-filtrerat enligt [analysis-rules.md](../analysis-rules.md) grupp 7).
@@ -31,7 +31,7 @@ En valberedningsledamot bör inte samtidigt vara styrelseledamot. Självnomineri
   - Skrivrätt i valberedningens arbetsyta (intern).
   - Skrivrätt på kandidatnominering-ärenden ([case-types.md](../case-types.md)).
   - Publiceringsrätt på valberedningens samlade förslag inför stämma.
-- **Edition-avvikelser:** I mindre kooperativ-förskolor ofta en person istället för en grupp — stadgan accepterar detta. Onboarding-wizarden frågar om *antal* valberedningsledamöter, inte om *stadgan tillåter* en ensam person.
+- **Edition-avvikelser:** I mindre föreningar ofta en person istället för en grupp — stadgan accepterar detta. Onboarding-wizarden frågar om *antal* valberedningsledamöter, inte om *stadgan tillåter* en ensam person.
 - **Hot att skydda:** Självjäv — en valberedningsledamot som föreslår sig själv till styrelsen. Systemet flaggar det i förslaget så att stämman kan se fallet och hantera det.
 
 ## Valberedningens sammankallande

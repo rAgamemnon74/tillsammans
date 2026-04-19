@@ -10,7 +10,7 @@ Nästan varje governance-handling som plattformen stödjer är ett *ärende* —
 
 1. **Transparens är default för de ärendetyper MVP börjar med.** Motion, styrelseförslag, utlägg, stadgeändring, kandidatnominering, revisorsfråga har publik eller medlem-läsvy efter publiceringstillfället. Undantag måste motiveras per ärendetyp — inte per ärende.
 2. **Personärenden är *explicita* undantag.** Uteslutning, medlemsansökan under beredning, disciplinära varningar har avgränsad insyn. Regeln från [mission.md](mission.md): *"Inte full insyn i pågående ärenden."*
-3. **GDPR — särskilt för föräldraförening.** Persondata om minderåriga barn och vårdnadshavare är skarpare känsligt än medlemsdata i en samfällighet. Fältfilter per roll, inga publika kontaktuppgifter utan samtycke, gallringsregler kopplade till ärendestatus. `[ÖPPEN]`: importera motsvarande struktur som Hemmets 8 GDPR-principer till egen sektion i [architecture.md](architecture.md).
+3. **GDPR — fältfilter per roll.** Inga publika kontaktuppgifter utan samtycke, gallringsregler kopplade till ärendestatus. `[ÖPPEN]`: importera motsvarande struktur som Hemmets 8 GDPR-principer till egen sektion i [architecture.md](architecture.md).
 4. **God och samarbetsvillig ton.** Varje ärendetyp har ett *textbibliotek* med välformulerade mallar — bekräftelser, kompletteringsfrågor, avslag, yttranden. UI föreslår, styrelsen anpassar. Principen är saklig konstruktiv ton, inte byråkrati, inte konflikteskalation. Se [Textbiblioteket](#textbiblioteket) nedan.
 5. **Stadgeförankring är obligatorisk.** Varje ärende måste peka på minst en stadgaparagraf. Detta är samma krav som redan gäller beslut ([architecture.md#kärnmoduler](architecture.md#kärnmoduler)) — drar ut det en nivå tidigare så att ärendet *föds* med sin juridiska förankring.
 6. **Beslut är terminus.** Ett ärende avslutas via beslut på möte/stämma eller via formellt avvisande/återkallelse. Beslutet slutloggas i `DecisionLog`; ärendet är vägen dit. Ingen ärendetyp får sin egen parallella beslutsmekanism.
@@ -89,7 +89,7 @@ Sidospår (från vilken status som helst före AVGJORD):
 
 ### Tidsregler
 
-- **Inlämningsfrist:** per stadga. Samfällighet typiskt 2v–1 mån före stämma ([editions/samfallighet.md](editions/samfallighet.md)); föräldraförening varierar.
+- **Inlämningsfrist:** per stadga. Samfällighet typiskt 2v–1 mån före stämma ([editions/samfallighet.md](editions/samfallighet.md)); LEF enligt stadgan.
 - **Yttrande-frist:** styrelsen måste ha förlagt yttrande senast X dagar före kallelse. Stadge-styrt; default = så att PUBLICERAD hinner ske innan kallelsens min-gräns.
 - **Återkallelse-fönster:** tillåtet t.o.m. PUBLICERAD. Efter att kallelse gått ut hör motionen till stämman.
 
@@ -131,7 +131,6 @@ Varje mall nedan finns som redigerbar standardtext. Styrelsen kan anpassa per ä
 
 - Inlämnare-identitet är nödvändig enligt föreningsrätt — kan inte anonymiseras.
 - Publik vy visar endast namn; aldrig kontaktuppgifter, fastighetsadress eller personnummer.
-- **Föräldraförening:** om motionen rör enskilt barn (t.ex. specialkost, särskild hänsyn) — motionen hanteras som personärende istället, inte öppen motion. Onboarding-texten till inlämnare förklarar detta innan formuläret skickas.
 - Motioner + beslut bevaras långsiktigt (governance-historik); inga särskilda gallringstider.
 
 ### Hot och försvar
@@ -164,7 +163,7 @@ Ny medlem söker inträde → styrelsebeslut. Stadgaförankring: medlemskriterie
 
 ### Uteslutningsärende
 
-**Personärende — starkaste GDPR-känsligheten i biblioteket.** Initiator: styrelsen (eller stadgekrav vid utebliven avgift). Stadgeförankring obligatorisk. Livscykel med flera spärrar: `VARNING → SVARSFÖNSTER → BEREDNING → STYRELSEBESLUT → (ev. STÄMMOPRÖVNING)`. **Publicering: ej publik.** Endast berörd medlem, styrelse och revisor. **Ton i mallar:** sakliga, proportionerliga, med tydlig besvärshänvisning — *aldrig* anklagande formuleringar. Hanteringen ska följa god sed även när ärendet gäller allvarlig konflikt. **Föräldraförening:** särskilt känsligt eftersom barn påverkas — mallar och publicering skyddar barnet explicit. Stubb.
+**Personärende — starkaste GDPR-känsligheten i biblioteket.** Initiator: styrelsen (eller stadgekrav vid utebliven avgift). Stadgeförankring obligatorisk. Livscykel med flera spärrar: `VARNING → SVARSFÖNSTER → BEREDNING → STYRELSEBESLUT → (ev. STÄMMOPRÖVNING)`. **Publicering: ej publik.** Endast berörd medlem, styrelse och revisor. **Ton i mallar:** sakliga, proportionerliga, med tydlig besvärshänvisning — *aldrig* anklagande formuleringar. Hanteringen ska följa god sed även när ärendet gäller allvarlig konflikt. Stubb.
 
 ### Utläggsgodkännande
 
@@ -203,7 +202,6 @@ Mallbiblioteket är i sig ett governance-bidrag — en förening ärver *hur man
 - **Ingen rätts-retorik.** Undvik *"det är fel att ..."*, *"du måste ..."*, *"kravet är ..."*. Använd *"stadgan föreskriver ..."* + paragrafhänvisning.
 - **Personlig tilltal.** *"Hej Anna"* slår *"Bäste medlem"*. En förening är en samling människor, inte en myndighet.
 - **Stadgehänvisning istället för auktoritetspåbud.** Alla restriktiva formuleringar grundas i stadgan eller lag — inte i styrelsens vilja.
-- **Föräldraförening: barnets perspektiv.** När ett ärende rör barn, formuleras texten så att barnet kan läsas av föräldrarna utan skada. Ingen anklagande ton, inget konfliktspråk.
 
 ### Struktur
 

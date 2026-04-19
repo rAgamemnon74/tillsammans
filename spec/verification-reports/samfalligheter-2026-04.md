@@ -84,13 +84,13 @@ LFS kräver debiteringslängd — men den sparas ofta internt. Kyrkmossens publi
 - Revisor: 1–2 + suppleant, **lekmanna** (ingen auktoriserad i urvalet)
 - Valberedning: 2–3 personer
 
-**Åtgärd:** Ingen — asymmetriska mandatperioder redan stödda via föräldraförenings-analysen.
+**Åtgärd:** Ingen — asymmetriska mandatperioder redan stödda i core-spec.
 
 ### Mönster 5 — Jäv (tystnad igen)
 
 0/10 stadgar har obligatorisk jävsdeklaration. SFL 36/48§ implicit. Endast Kyrkmossen har "detaljerad process" (ej extraherbart).
 
-**Åtgärd:** Ingen spec-logik-ändring. Onboarding för samfällighet måste aktivt motivera jäv-modulen, samma mönster som föräldraförenings-editionen.
+**Åtgärd:** Ingen spec-logik-ändring. Onboarding för samfällighet måste aktivt motivera jäv-modulen.
 
 ### Mönster 6 — Extern ekonomi-förvaltning
 
@@ -105,9 +105,9 @@ Båda är externa juridiska personer med mandat mot ekonomiska funktioner.
 
 - Min 2v standard (7/10) — Lantmäteriets normalstadgar
 - Min 3v (Rörumstrand, PSV)
-- **Torpa Skogs: tidigast 4v, senast 2v** — matchar Minigiraffen-mönstret (max-gräns mot glömska)
+- **Torpa Skogs: tidigast 4v, senast 2v** — max-gräns mot glömska
 
-**Åtgärd:** Redan adresserat via föräldraförenings-analysen.
+**Åtgärd:** Stöd både min- och max-gräns på kallelsetid. Kvitterad mot [core-concepts.md#kallelsemodell](../core-concepts.md#kallelsemodell-myndighetskrav-öppen-scope).
 
 ### Mönster 8 — Räkenskapsår
 
@@ -123,9 +123,9 @@ Båda är externa juridiska personer med mandat mot ekonomiska funktioner.
 - **PSV**: min 10k/år, max 700k total
 - **Fröåvägen**: höjt till 100k/år via stadgeändring 2025
 
-Underhållsfond = samfällighetens motsvarighet till skol-FF:s strukturerade eventfond.
+Underhållsfond är samfällighetens centrala fond-mönster.
 
-**Åtgärd:** Modellerat som "underfonder" i architecture.md sedan föräldraförenings-analysen. Validerat.
+**Åtgärd:** Modellerat som "underfonder" i [architecture.md](../architecture.md) med generisk fond-abstraktion (fördelningsregel, tak/golv, beslutsgång). Validerat.
 
 ### Mönster 10 — Normalstadgar som mall
 
@@ -141,9 +141,9 @@ Underhållsfond = samfällighetens motsvarighet till skol-FF:s strukturerade eve
 | 1–3 år | 2/10 |
 | 5+ år eller inloggning-endast | 3/10 (PSV 2019, Torpa 2022 förslag, Långbacka inloggning) |
 
-**Bättre än föräldraföreningar** (>40% hade 5+ års gap). LFS-formkraven tvingar årlig output även om publik publicering varierar.
+LFS-formkraven tvingar årlig output även om publik publicering varierar.
 
-**Åtgärd:** Passiv-erosion-hotet ([threats.md]) gäller även här men mindre akut. Inga nya ändringar.
+**Åtgärd:** Passiv-erosion-hotet ([threats.md](../threats.md)) gäller här men lågintensivt jämfört med föreningstyper utan motsvarande lagkrav. Inga nya ändringar.
 
 ### Mönster 12 — Styrelsearvode
 

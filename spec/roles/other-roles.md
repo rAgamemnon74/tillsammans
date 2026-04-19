@@ -10,7 +10,6 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 - [nominating-committee.md](nominating-committee.md) — valberedning
 - [meeting-roles.md](meeting-roles.md) — flyktigt tillsatta mötesroller
 - [architecture.md](../architecture.md) — utskott, underfonder, huvudmanna-relation, `ExternalAdministrator`-konceptet
-- [editions/foraldraforening.md](../editions/foraldraforening.md) — klassrepresentant och utskott i skol-FF-kontext
 
 ## Principer
 
@@ -30,11 +29,11 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 
 ## Utskotts- och kommittéledamot
 
-- **Stödnivå:** attribut via medlemskap i en `Committee`-entitet ([architecture.md](../architecture.md), [editions/foraldraforening.md#utskott](../editions/foraldraforening.md#utskott)).
+- **Stödnivå:** attribut via medlemskap i en `Committee`-entitet ([architecture.md](../architecture.md)).
 - **Lag- och stadge-grund:** Stadge-bestämd delegering. Utskottets mandat, takbelopp, rapporteringsflöde definieras i det stämmobeslut som inrättade utskottet.
 - **Ansvar:** Beslut inom utskottets mandat utan att behöva vänta på styrelsens möte. Rapportera till styrelsen via namngiven kontaktperson.
 - **Hur stödjs:** En `Committee` har medlemmar, ett mandat (belopp, scope, tidsperiod), en kontaktperson och en rapporteringsskyldighet. Utskotts-beslut går in i samma beslutslogg som styrelsebeslut men märks med utskottets namn.
-- **Typiska mönster:** Föräldraförenings eventkommitté, samfällighets underhållsgrupp, kooperativ fixgrupp.
+- **Typiska mönster:** Samfällighets underhållsgrupp, LEF:s specialuppgifter med särskild kompetens.
 - **Hot att skydda:** Mandatläckage — utskott tar beslut utanför sitt tilldelade scope. Systemet spärrar utläggsgodkännanden över takbeloppet och flaggar beslut utanför scope för styrelsens granskning.
 
 ### Utskottets ordförande / sammankallande
@@ -49,22 +48,12 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 - **Lag- och stadge-grund:** Stadgebeslut eller permanent styrelsemandat som delegerar godkännande av medlemsansökningar. Inte lagstyrt; rent praktisk organisering.
 - **Ansvar:** Granska och godkänna inkomna medlemsansökningar inom delegeringsmandatet. Föreslå avslag vid tveksamhet. Eskalera till fullständig styrelse vid kontroversiella fall eller ärenden som rör stadgetolkning.
 - **Hur stödjs:** `RoleAssignment` på en styrelseledamot får en `memberApprovalAuthority`-flagga. Vid aktiv flagga får personen behörighet att skriva `MEDLEMSKAP_GODKÄNT` och `MEDLEMSKAP_AVSLAGET` utan styrelsebeslut — men alla sådana beslut läses av övriga styrelseledamöter och revisorn i granskningsloggen.
-- **Typiska mönster:** I skol-FF med 300+ vårdnadshavare är rollen typiskt sekreteraren eller en ledamot med ansvar för föräldragruppen. I mindre föreningar är mandatet ofta hos ordförande eller kassör. I samfälligheter är det vanligen ordföranden som registrerar ägarbyten.
-- **Edition-avvikelser:** Mest praktiskt relevant i skol-FF (där ansökningsvolymen är hög). I samfällighet blir rollen mer av "ägarbytes-registrerare". I LEF med formell ansökningsprocess behövs den ofta för att inte överbelasta styrelsemöten.
+- **Typiska mönster:** I samfälligheter är det vanligen ordföranden som registrerar ägarbyten. I LEF med formell ansökningsprocess behövs rollen ofta för att inte överbelasta styrelsemöten.
+- **Edition-avvikelser:** I samfällighet blir rollen mer av "ägarbytes-registrerare". I LEF med formell ansökningsprocess behövs den ofta för att inte överbelasta styrelsemöten.
 - **Hot att skydda:** Maktkoncentration — om medlemsansvarig ensidigt avslår eller godkänner utan spårbarhet. Mitigeras av att alla beslut är synliga för övriga styrelseledamöter och revisor i granskningsloggen; att eskalerings-tröskel finns; att mandatet kan återkallas av styrelsen.
 - **`[ÖPPEN]`:** Mandatets kvantitativa räckvidd (max antal beslut per period innan återrapportering)? Förslag: stadgan/föreningen bestämmer; systemet rapporterar siffror löpande oavsett.
 
 Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#delegerat-godkännande--medlemsansvarig) för processens helhet.
-
-## Klassrepresentant
-
-- **Stödnivå:** attribut på en medlem (föräldraförenings-specifikt).
-- **Lag- och stadge-grund:** Stadgar i vissa föräldraföreningar; tradition i andra. *Ej* styrelsepost.
-- **Ansvar:** Kommunikationsansvar mellan föräldragruppen i en specifik klass och styrelsen / skolan. Ingen beslutsmandat.
-- **Hur stödjs:** `Membership` har en `classRepresentativeFor: ClassId[]`-flagga. En medlem kan vara klassrepresentant för flera klasser (ovanligt men möjligt när syskon är utspridda).
-- **Typiska mönster:** Två per klass (primär + backup) är vanligt. Vald vid klass-föräldramöte, inte vid föreningsstämma — men stadgan kan föreskriva att valet protokollförs hos styrelsen.
-- **Edition-avvikelser:** Detta attribut finns bara i föräldraförening-editionen; andra editions har `classRepresentativeFor = null` alltid.
-- **Hot att skydda:** Ingen formell jäv-exponering, men klassrepresentanten är ibland kanalen genom vilken föräldrar framför önskemål till styrelsen. Dokumentation av *vad som förmedlats* ligger hos styrelsen via ärendena ([case-types.md](../case-types.md)), inte hos klassrepresentanten.
 
 ## Kontaktperson för underfond
 
@@ -72,8 +61,8 @@ Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#del
 - **Lag- och stadge-grund:** Stadge-bestämd vid fondens inrättande.
 - **Ansvar:** Hantera ansökningar mot fonden enligt fondens beslutsgång. Rapportera löpande status till styrelsen.
 - **Hur stödjs:** `Fund.contactPersonId` pekar på en `RoleAssignment` eller `Membership`. Kontaktpersonen har skrivrätt på fondens beslutsflöde inom fondens mandat; styrelsen läser och granskar.
-- **Typiska mönster:** Skol-FF:s strukturerade eventfond har en kontaktperson, typiskt kassören eller en utsedd ledamot. Samfällighets underhållsfond har oftast styrelsen som kollektiv beslutsfattare — ingen enskild kontaktperson.
-- **Hot att skydda:** Konfidentialitet — elevfond-mönstret (*"pengar synliga, mottagare ej"*) fångas av `ConfidentialBudget`-flaggan ([editions/foraldraforening.md#underfonder](../editions/foraldraforening.md#underfonder)). Kontaktpersonen ser mottagarinformation; övriga styrelseledamöter ser bara belopp.
+- **Typiska mönster:** Samfällighets underhållsfond har oftast styrelsen som kollektiv beslutsfattare — ingen enskild kontaktperson. LEF med specialiserade ändamålsbestämda fonder kan ha en utsedd kontaktperson.
+- **Hot att skydda:** Konfidentialitet — fonder som hanterar känslig mottagare-information (stöd till enskild, med sekretessbehov) fångas av `ConfidentialBudget`-flaggan. Kontaktpersonen ser mottagarinformation; övriga styrelseledamöter ser bara belopp.
 
 ## ExternalAdministrator
 
@@ -81,8 +70,8 @@ Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#del
 - **Lag- och stadge-grund:** Avtalstyrd. Stadgarna kan tillåta/förbjuda, men själva rollen är ett externt avtal — inte ett val på stämman.
 - **Ansvar:** Sköter delar av ekonomiförvaltningen enligt avtalets scope — bokföring, fakturering, årsredovisning eller hela ekonomin. **Inget beslutsmandat.**
 - **Hur stödjs:** Tidsbegränsat `RoleAssignment` med `scope: FINANCIAL_*` och `validUntil: <avtalets slutdatum>`. Läs/skriv mot ekonomiska vyer enligt scope; läs övrigt; skriv inga beslut.
-- **Typiska mönster:** Samfällighet med HSB som förvaltare, samfällighet med lokal ekonomibyrå, föräldrakooperativ som outsourcar löneadministration.
-- **Edition-avvikelser:** Empiriskt vanligt i samfällighet (Kyrkmossen→HSB, Fröåvägen→CarLe Ekonomi). Förekommer också i skol-FF utan egen kassör. Sällsynt i kooperativ-förskolor (de har oftast egen kassör ur föräldragruppen).
+- **Typiska mönster:** Samfällighet med HSB som förvaltare, samfällighet med lokal ekonomibyrå.
+- **Edition-avvikelser:** Empiriskt vanligt i samfällighet (Kyrkmossen→HSB, Fröåvägen→CarLe Ekonomi). Förekommer också i LEF som outsourcar löneadministration eller bokföring.
 - **Hot att skydda:** Uppdraget *är* skyddsmekanismen i ena riktningen (extern kompetens kompletterar lekmannakassören). I andra riktningen är hotet att styrelsen tappar greppet om ekonomin — systemet måste visa kassörs-vyerna för styrelsen även när `ExternalAdministrator` gör det dagliga arbetet.
 - **Redan beskriven i:** [architecture.md](../architecture.md) och [editions/samfallighet.md#extern-ekonomi-förvaltning](../editions/samfallighet.md#extern-ekonomi-förvaltning).
 
@@ -94,10 +83,9 @@ Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#del
 - **RBAC-kärna:** Rösträtt vid stämma (enligt röstmodell, se [core-concepts.md#röstning](../core-concepts.md#röstning)); motionsrätt ([case-types.md](../case-types.md)); läsrätt på publicerade beslut, stadgar, protokoll och anslagstavla.
 - **Terminologi per edition (via i18n):**
   - Samfällighet: **tomtägare** eller **sakägare**
-  - Föräldraförening: **vårdnadshavare** (eller **förälder** i vardagligt UI)
-  - LEF (annan): **medlem**
+  - LEF: **medlem**
 - **Livscykel:** `ACTIVE` / `LAPSED` / `EXCLUDED` — se [domain-model.md#medlemskapslivscykel](../domain-model.md#medlemskapslivscykel).
-- **Edition-avvikelser:** Se respektive edition-fil. Samfällighet har `PropertyUnit` som bärare; föräldraförening har `Parent`/`Child` som nyckelentiteter; LEF har `Member` direkt.
+- **Edition-avvikelser:** Se respektive edition-fil. Samfällighet har `PropertyUnit` som bärare; LEF har `Member` direkt.
 - **Hot att skydda:** Asymmetrier i förberedelse/uttryck, informella anspråk ([threats.md](../threats.md)) — bas-rollens rättigheter är det som stämman i slutändan försvarar via stadgarna. Systemets transparens-defaults ger medlemmen lika mycket insyn som styrelsen vill medge ([mission.md](../mission.md)).
 
 ### Undervarianter — representation
@@ -117,7 +105,6 @@ Representation är inte en egen roll utan ett tillstånd på medlemskapet.
 | Firmatecknare | Styrelseledamot | Signering av föreningens avtal |
 | Utskottsledamot | Medlem (ofta styrelseledamot) | Utskottets eget beslutsflöde |
 | Utskotts-ordförande | Utskottsledamot | Utskottets kallelse och rapport |
-| Klassrepresentant | Medlem (vårdnadshavare) | Klass-gruppens kommunikation |
 | Fond-kontaktperson | Ledamot eller medlem | Fondens beslutsflöde |
 
 Attributöverlägg skapas genom tilldelning, inte genom stämmans val — undantag för utskottsledamöter som väljs på stämman men inom utskottets kontext.
@@ -133,6 +120,5 @@ Roller som andra plattformar (särskilt Hemmet för BRF) har men som Tillsammans
 
 ## Öppna frågor
 
-- **Utskotts-vs-kommitté-terminologi.** Svenska föreningar använder båda; är de synonymer i UI eller ska vi skilja? Förslag: välj en term (*utskott*) för UI-konsekvens, men tillåt föreningen skriva *"Eventkommittén"* som egennamn.
-- **Klassrepresentant som egen entitet vs. attribut.** Om framtida edition (idrottsförening) behöver lagrepresentant med liknande mönster — generaliserar vi? Förslag: håll det som attribut tills ett andra användningsfall dyker upp.
+- **Utskotts-vs-kommitté-terminologi.** Svenska föreningar använder båda; är de synonymer i UI eller ska vi skilja? Förslag: välj en term (*utskott*) för UI-konsekvens, men tillåt föreningen skriva egennamn som t.ex. *"Underhållskommittén"*.
 - **ExternalAdministrator med flera personer.** HSB skickar typiskt en handläggare men kan byta. Ska `ExternalAdministrator` vara en organisation med tillhörande personer, eller en individuell person? Förslag: organisation med aktiva representanter, så att byte av handläggare inte kräver nytt avtal i systemet.

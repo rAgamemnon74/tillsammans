@@ -8,7 +8,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 - [board-roles.md](board-roles.md) — styrelseroller
 - [oversight-roles.md](oversight-roles.md) — revisor och revisorssuppleant
 - [nominating-committee.md](nominating-committee.md) — valberedning
-- [other-roles.md](other-roles.md) — firmatecknare, kommittémedlem, klassrepresentant, ExternalAdministrator
+- [other-roles.md](other-roles.md) — firmatecknare, kommittémedlem, ExternalAdministrator
 - [case-types.md](../case-types.md) — motion-livscykel refererar mötesroller vid beredning och beslut
 - [core-concepts.md](../core-concepts.md) — röstlängd, röstlängdsetablering, kallelsemodell
 
@@ -48,7 +48,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 - **Ansvar:** Granska protokollets överensstämmelse med det som faktiskt inträffade på stämman. Underteckna protokollet jämte mötesordförande när de är nöjda.
 - **RBAC-kärna (under mötet):** Läsa protokollutkastet löpande; lägga kommentarer/invändningar på enskilda punkter utan att blockera mötets gång.
 - **RBAC-kärna (efter mötet):** Läsa det slutgiltiga protokollet; begära ändring; signera när nöjd. Rollen är aktiv från mötet till signering — typiskt 2–4 veckor.
-- **Edition-avvikelser:** Samfällighet har ofta två justerare av lagligt skäl (LFS 49§). Föräldraförening: stadge-variation från en till två.
+- **Edition-avvikelser:** Samfällighet har ofta två justerare av lagligt skäl (LFS 49§). LEF: stadge-variation från en till två.
 - **Hot att skydda:** Justerarens roll *är* skyddsmekanismen — ett protokoll utan justering har sämre bevisvärde. Systemet ska göra det enkelt för justeraren att granska utan att behöva sitta bredvid sekreteraren.
 - **`[ÖPPEN]`:** Vad händer om justerare vägrar signera? Förslag: protokollet går till stämman som första punkt vid nästa möte för godkännande; motiveringen för vägran loggas.
 

@@ -39,23 +39,9 @@ Röstmekaniken är avgjord (se [Kärnkoncept: Röstning](core-concepts.md#röstn
 
 Avgörs efter att domänmodellen är stabil. Sannolikt Next.js + Prisma + tRPC + Tailwind (T3-familjen) i linje med Hemmet, men inget tvång.
 
-### `[ÖPPEN]` Arbetsplikt i föräldrakooperativ
-
-Föräldrakooperativ-förskolor (Svanen 20 dagar/år, Minigiraffen 15–17, Kottarna, Barnlåten) har kvantifierad arbetsplikt i stadgarna — städveckor, jour vid personalfrånvaro, fixardagar. Styrelseledamöter kan få reduktion. Uteblivna dagar kan leda till uteslutning.
-
-Tre vägar:
-
-1. **In i scope** som modul i kooperativ-edition: plikt-register per medlem, reduktion för styrelse, `LAPSED`/`EXCLUDED`-trigger vid uteblivna dagar.
-2. **Utanför scope**: hänvisas till externt verktyg (kalenderappar, enklare tabell). Tillsammans dokumenterar bara *beslutet* att medlem uteslutits, inte plikttimmarna.
-3. **Mittemellan**: enkel plikttimme-räknare som inbyggd rapport utan automatik.
-
-Förslag: väg 2 (utanför scope) med en dokumenterad export-punkt för eventuellt framtida externt verktyg. Motivering: plikt-hantering är operativt (se [architecture.md#utanför-scope-externa-verktyg](architecture.md#utanför-scope-externa-verktyg)), och varierar kraftigt mellan kooperativ.
-
-Empirisk bakgrund: [verification-reports/foraldraforeningar-2026-04.md#mönster-11--arbetsplikt](verification-reports/foraldraforeningar-2026-04.md#mönster-11--arbetsplikt).
-
 ### `[ÖPPEN]` Stadgetolkning vs. stadgeändring
 
-Empiriskt fall: en av de verifierade skol-FF tolkade 2019 stadgans *"två suppleanter"* som *minst* två och valde in tre. Detta är inte en stadgeändring — det är en tolkningsavvikelse.
+Stämman kan i praktiken tolka en formulering i stadgan på ett avvikande sätt (t.ex. läsa *"två suppleanter"* som *minst* två och välja in tre) utan att ändra själva texten. Det är inte en stadgeändring — det är en tolkningsavvikelse.
 
 Stadge-modulen behöver kunna representera:
 
