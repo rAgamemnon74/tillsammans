@@ -26,22 +26,24 @@ Styrelsemötens dagordning är flexibel; stämmodagordningar har lagligt obligat
 
 ### Styrelsemöte — standardmall
 
-Inga lagkrav på struktur — styrelsen anpassar fritt. Tillsammans föreslår denna baseline:
+Inga lagkrav på struktur, men närvarokontroll och behörighet är fasta första punkter eftersom alla deltagare är systemanvändare och digital validering är effektiv.
 
 ```
-1.  Mötets öppnande (ordförande)
-2.  Val av justerare (om inte sekreteraren automatiskt fyller funktionen)
-3.  Godkännande av föregående mötesprotokoll
-4.  Genomgång av åtgärder från föregående möte
-5.  Ekonomisk rapport (kassör)
-6.  Inkomna ärenden under behandling (per ärendetyp)
-7.  Beslutspunkter
-8.  Övriga frågor (informationspunkter, ej beslut)
-9.  Nästa möte och eventuella förberedelser
-10. Mötets avslutande
+1.  Mötets öppnande (ordförande eller vice ordförande)
+2.  Närvarokontroll                                          [auto, digital]
+3.  Mötets behörighet                                        [auto, mot KVORUM]
+4.  Val av justerare (om inte stadga föreskriver fast process)
+5.  Godkännande av föregående mötesprotokoll
+6.  Genomgång av åtgärder från föregående möte
+7.  Ekonomisk rapport (kassör)
+8.  Inkomna ärenden under behandling (per ärendetyp)
+9.  Beslutspunkter
+10. Övriga frågor (informationspunkter, ej beslut)
+11. Nästa möte och eventuella förberedelser
+12. Mötets avslutande
 ```
 
-Punkt 6 förfylls automatiskt med ärenden som har status `BEREDNING` eller väntar på styrelsebeslut (från [case-types/](case-types/)). Punkt 7 förfylls med pågående ärenden där beslutsdeadline närmar sig.
+Punkt 2-3 är digital-stödda enligt [rostlangd.md#närvarokontroll-för-styrelsemöten---digital](rostlangd.md). Punkt 8 förfylls automatiskt med ärenden som har status `BEREDNING` eller väntar på styrelsebeslut (från [case-types/](case-types/)). Punkt 9 förfylls med pågående ärenden där beslutsdeadline närmar sig.
 
 ### Ordinarie årsstämma — standardmall
 
@@ -54,7 +56,7 @@ Bygger på LEF 6-kapitel och Lantmäteriets normalstadgor för samfällighet. La
 4.  Val av två justeringspersoner tillika rösträknare              [lag] [auto]
 5.  Fråga om stämman kallats enligt stadgarna                      [lag] [auto]
 6.  Godkännande av dagordning
-7.  Fastställande av röstlängd                                     [lag] [auto]
+7.  Fastställande av röstlängd                                     [lag — pappers-rutin, skannas till protokollet efter mötet]
 8.  Styrelsens verksamhetsberättelse                               [bilaga obligatorisk]
 9.  Revisionsberättelse                                            [auto]
 10. Fastställande av resultat- och balansräkning                   [lag]
@@ -105,6 +107,7 @@ Vid onboarding genomgås föreningens stadga paragraf för paragraf. För varje 
 | `MOTIONSFRIST` | Stänger automatiskt motions-mottagningen vid rätt tid |
 | `RÖSTMETOD` | Konfigurerar röstlängd-genereringen (huvudmetod / andelsmetod / kombination) |
 | `MAJORITET` | Sätter godkännandetröskel per beslutstyp (enkel / kvalificerad 2/3 eller 3/4) |
+| `KVORUM` | Räknar närvarande mot beslutsförhets-tröskel; flaggar `BEHÖRIGT`/`EJ_BESLUTSFÖRT` vid styrelsemöte. För stämma: visar tröskel som referens. Se [rostlangd.md#stadgeparagraf-typ-kvorum](rostlangd.md#stadgeparagraf-typ-kvorum) |
 | `STYRELSESAMMANSÄTTNING` | Validerar antal vid val; flaggar avvikelser |
 | `MANDATPERIOD` | Beräknar mandatslut per ledamot; flaggar omval i god tid |
 | `FIRMATECKNING` | Markerar beslut som kräver firmatecknares signering |

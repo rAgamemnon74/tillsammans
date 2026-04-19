@@ -71,6 +71,8 @@ Listan växer allteftersom specen utvecklas. Den är inte uttömmande här, men 
 
 **Möten:**
 - `MÖTE_KALLAT`, `KALLELSE_UTSKICKAD`, `MÖTE_ÖPPNAT`, `MÖTE_AVSLUTAT`, `PROTOKOLL_UPPRÄTTAT`, `PROTOKOLL_JUSTERAT`
+- `BEHÖRIGHET_BEKRÄFTAD` — kvorum verifierat vid styrelsemöte
+- `NÄRVARO_REGISTRERAD` — mid-möte-byten (ankomst, avgång, jäv-aktivering/avslutning) vid styrelsemöte
 
 **Ekonomi:**
 - `UTLÄGG_INLÄMNAT`, `UTLÄGG_GODKÄNT`, `UTLÄGG_AVSLAGET`, `BETALNING_EXPORTERAD`, `FAKTURA_UTSTÄLLD`, `DEBITERINGSLÄNGD_FASTSTÄLLD`
