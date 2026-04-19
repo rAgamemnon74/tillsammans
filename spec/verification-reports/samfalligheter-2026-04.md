@@ -12,7 +12,7 @@
 
 1. **Specens röstregel var bakvänd mot LFS-standarden.** Spec sa *"andelsmetod för GA-frågor"* — verkligheten och lagen säger **huvudmetod som default, andelstalsmetod på begäran vid ekonomisk fråga med 1/5-tak**. Rättat.
 2. **Multi-GA är normen** (5 av 10). `Participation`-entiteten i domänmodellen validerad.
-3. **Debiteringslängden är lagkrav men publikt sällsynt** (2 av 10). Måste vara förstklassig output-funktion i editionen, inte bara "kassörsstöd generellt".
+3. **Debiteringslängden är lagkrav men publikt sällsynt** (2 av 10). Måste vara primär output-funktion i editionen, inte bara "kassörsstöd generellt".
 4. **Alla 10 följer Lantmäteriets normalstadgar som mall.** Onboarding för samfällighet kan vara parametriserad wizard över normalstadgan — inte fritext-stadga.
 5. **Extern ekonomi-förvaltning är vanlig** (HSB, ekonomibyråer). Saknades som rollkoncept i specen; tillagt.
 
@@ -74,7 +74,7 @@ Kyrkmossen använder platt fördelning 1/97 — fungerar då alla fastigheter ä
 
 LFS kräver debiteringslängd — men den sparas ofta internt. Kyrkmossens publika debiteringslängd är exempel på best practice.
 
-**Åtgärd:** Debiteringslängd som *automatiskt producerad output* från andelstal × kostnader per GA, förstklassig funktion i [editions/samfallighet.md](../editions/samfallighet.md).
+**Åtgärd:** Debiteringslängd som *automatiskt producerad output* från andelstal × kostnader per GA, primär funktion i [editions/samfallighet.md](../editions/samfallighet.md).
 
 ### Mönster 4 — Styrelsestruktur
 
@@ -149,7 +149,7 @@ Underhållsfond = samfällighetens motsvarighet till skol-FF:s strukturerade eve
 
 Fröåvägen dokumenterar specifika nivåer: ordförande 50k, ledamot 4k+2k/möte, suppleant 1k+1,5k/möte.
 
-**Åtgärd:** Stämmobeslut via beslutsloggen räcker. Inte förstklassigt koncept.
+**Åtgärd:** Stämmobeslut via beslutsloggen räcker. Inte primärt koncept.
 
 ### Mönster 13 — Förrättning/anläggningsbeslut
 

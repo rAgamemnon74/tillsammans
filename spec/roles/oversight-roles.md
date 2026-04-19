@@ -21,7 +21,7 @@ En revisor kan per definition inte vara styrelseledamot i samma förening — de
 
 ## Revisor
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 8 (ekonomiska föreningar), LFS 47§ (samfälligheter), revisorslagen (för auktoriserad revisor).
 - **Ansvar:** Granska räkenskaper och styrelsens förvaltning för det gångna räkenskapsåret. Avlämna revisionsberättelse till stämman med till- eller avstyrkan av ansvarsfrihet för styrelsen.
 - **RBAC-kärna:** Permanent läsrätt — all ekonomi, alla styrelsebeslut, alla jävsdeklarationer, hela audit-trail, alla utläggsärenden, dokumentarkivet, kallelsematerial. Ingen skrivrätt utöver egna revisorsfrågor och revisionsberättelse ([case-types.md](../case-types.md)).
@@ -33,7 +33,7 @@ En revisor kan per definition inte vara styrelseledamot i samma förening — de
 
 ## Revisorssuppleant
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Föreningsstadgar; LEF 8 där stadgan föreskriver.
 - **Ansvar:** Ersätter ordinarie revisor vid förhinder eller frånvaro.
 - **RBAC-kärna:** Samma som revisor — läsrätten finns löpande så att suppleanten kan vara informerad när rollen aktiveras. Revisionsberättelsen skrivs av den som faktiskt agerar revisor under räkenskapsårets avslutande.

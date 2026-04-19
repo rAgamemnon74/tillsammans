@@ -9,14 +9,14 @@ Styrelsen är föreningens verkställande organ — vald av stämman för att dr
 **Relaterade dokument:**
 - [oversight-roles.md](oversight-roles.md) — revisor och revisorssuppleant (granskningsorgan)
 - [nominating-committee.md](nominating-committee.md) — valberedning (beredningsorgan)
-- [meeting-roles.md](meeting-roles.md) — ephemerala mötesroller
+- [meeting-roles.md](meeting-roles.md) — flyktigt tillsatta mötesroller
 - [other-roles.md](other-roles.md) — firmatecknare, utskottsledamot, klassrepresentant, ExternalAdministrator, bas-medlem
 - [case-types.md](../case-types.md) — ärendetypernas livscykel refererar dessa roller i RBAC-tabeller
 - [core-concepts.md](../core-concepts.md) — reservation och solidariskt ansvar gäller alla styrelseledamöter
 
 ## Principer
 
-1. **Lag och stadga styr — inte teknik.** En roll är förstklassig om lag eller stadgar behandlar den som distinkt (eget ansvar, egen jävsläge, egen signeringsrätt). Annars ligger den som attribut på en annan roll.
+1. **Lag och stadga styr — inte teknik.** En roll är primär om lag eller stadgar behandlar den som distinkt (eget ansvar, egen jävsläge, egen signeringsrätt). Annars ligger den som attribut på en annan roll.
 2. **Typ-agnostisk kärna.** Rollnycklarna är identiska mellan `AssociationType`. Skillnader i vardag (debiteringslängd, klasskassa, servitut-hantering) sker via data och i18n — inte via typ-specifika rollnycklar. Brott mot detta är ett arkitekturläckage; se [architecture.md](../architecture.md).
 3. **RBAC är minimalt explicit.** Varje roll har en kärn-permission-uppsättning som speglar dess lagstyrda ansvar. Finare behörigheter byggs av sammansättningar — inte av fler roller.
 4. **Solidariskt ansvar är synligt per ledamot.** Varje beslut loggar individuell position (ja/nej/nedlagd/reservation/frånvarande). Se [core-concepts.md#reservation-och-solidariskt-ansvar](../core-concepts.md#reservation-och-solidariskt-ansvar).
@@ -26,7 +26,7 @@ Styrelsen är föreningens verkställande organ — vald av stämman för att dr
 ## Per-roll-struktur
 
 Varje roll beskrivs med:
-- **Stödnivå:** förstklassig / attribut / ej stödd
+- **Stödnivå:** primär / attribut / ej stödd
 - **Lag- och stadge-grund:** vilka lagrum och stadge-paragrafer som namnger rollen
 - **Ansvar:** kärnuppdraget
 - **RBAC-kärna:** vad rollen får göra i systemet, minimalistiskt formulerat
@@ -35,7 +35,7 @@ Varje roll beskrivs med:
 
 ## Ordförande
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6:17, LFS 36§, föreningsstadgar. Nämns alltid explicit.
 - **Ansvar:** Leder styrelsen, kallar till möten, håller ordning på dagordningen, är oftast firmatecknare (se [other-roles.md#firmatecknare](other-roles.md)), representerar föreningen externt, har utslagsröst vid lika röstetal om stadgan så föreskriver.
 - **RBAC-kärna:** Kalla till styrelsemöte; godkänna dagordning; flytta ärenden till bordläggning eller stämma; signera kallelser; bekräfta protokoll efter justerare; utöva utslagsröst vid lika röstetal; se alla styrelsens arbetsytor.
@@ -44,7 +44,7 @@ Varje roll beskrivs med:
 
 ## Vice ordförande
 
-- **Stödnivå:** förstklassig. `[ÖPPEN]` möjlig degradering till attribut på ledamot — se nedan.
+- **Stödnivå:** primär. `[ÖPPEN]` möjlig degradering till attribut på ledamot — se nedan.
 - **Lag- och stadge-grund:** Stadgar namnger den explicit i de flesta observerade föreningar.
 - **Ansvar:** Ersätter ordförande vid frånvaro. I vissa föreningar permanent signeringspart jämte ordförande.
 - **RBAC-kärna:** Läs allt som ordförande ser löpande. Skriv-rättigheter aktiveras när ordförande är frånvarande eller jävig — systemet markerar "agerar som ordförande" i audit-trail.
@@ -54,7 +54,7 @@ Varje roll beskrivs med:
 
 ## Sekreterare
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Föreningsstadgar.
 - **Ansvar:** Protokollföring vid styrelsemöten, hantera kallelseutskick för styrelsen, arkivhantering.
 - **RBAC-kärna:** Skapa och redigera protokollutkast; publicera protokoll när justerare godkänt; hantera kallelseutskick; skriva i dokumentarkivet; se styrelsens arbetsyta fullt ut.
@@ -63,7 +63,7 @@ Varje roll beskrivs med:
 
 ## Kassör
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Bokföringslagen (där föreningen är bokföringsskyldig), föreningsstadgar.
 - **Ansvar:** Ekonomiförvaltning, kopplingen beslut → utbetalning, bokföringsunderlag, debiteringslängd (samfällighet — lagkrav enligt LFS).
 - **RBAC-kärna:** Godkänna utläggsärenden ([case-types.md](../case-types.md)); se alla beslut med ekonomisk konsekvens; generera debiteringslängd / budget-rapporter; exportera till bokföringssystem; skriva i kassaflödesvyn; läs alla styrelsebeslut.
@@ -72,7 +72,7 @@ Varje roll beskrivs med:
 
 ## Ledamot
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6, LFS 36§. Generisk styrelseledamot utan särskild tilldelad post.
 - **Ansvar:** Delta i styrelsebeslut, solidariskt ansvar (LFS 47§, LEF 8:12).
 - **RBAC-kärna:** Rösträtt vid styrelsemöten; reservationsrätt med motivering ([core-concepts.md](../core-concepts.md)); läs hela styrelsens arbetsyta; skapa motion-yttranden och deltaga i beredning.
@@ -81,7 +81,7 @@ Varje roll beskrivs med:
 
 ## Suppleant
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Föreningsstadgar; LEF 6:14 (om stadgarna tillåter).
 - **Ansvar:** Ersätter ordinarie ledamot vid frånvaro. Närvaro- och yttranderätt kan ges i stadgarna även utan rösträtt.
 - **RBAC-kärna:** Läsrätt löpande på styrelsens arbetsyta. Rösträtt aktiveras automatiskt när ordinarie är frånvarande eller jävig; systemet markerar "agerar som ordinarie X" i audit-trail.

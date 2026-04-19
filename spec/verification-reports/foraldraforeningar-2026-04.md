@@ -135,7 +135,7 @@ Tre distinkta modeller observerade:
 
 Föreningen är ofta **formell governance-intressent mot huvudmannen** (stiftelse, ab).
 
-**Spec-påverkan:** Relationen förening↔huvudman är värd förstklassigt koncept.
+**Spec-påverkan:** Relationen förening↔huvudman är värd primärt koncept.
 
 ### Mönster 11 — Arbetsplikt
 
@@ -164,7 +164,7 @@ Föräldrakooperativ har **kvantifierad arbetsplikt**. Skol-FF har generisk "eng
 1. **[core-concepts.md#röstning]** — "1 barn splittat" degraderad till stadge-alternativ; default är "1 medlem = 1 röst."
 2. **[core-concepts.md#kallelsemodell]** — max-gräns på kallelsetid explicitgjord.
 3. **[domain-model.md#medlemskapslivscykel]** — `LAPSED`-trigger kan vara externt faktum (Backatorp-modellen).
-4. **[architecture.md]** — utskott, underfonder, huvudmanna-relation, räkenskapsår-konfiguration listade som förstklassiga koncept.
+4. **[architecture.md]** — utskott, underfonder, huvudmanna-relation, räkenskapsår-konfiguration listade som primära koncept.
 5. **[verification.md] Spår 2** — nytt scenario 11 "onboarding med gammal stadga."
 6. **[editions/foraldraforening.md]** — ny dedikerad edition-fil för föräldraförening.
 7. **[open-questions.md]** — ny öppen fråga: arbetsplikt-modell i scope eller ej?

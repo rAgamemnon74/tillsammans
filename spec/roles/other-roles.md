@@ -8,14 +8,14 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 - [board-roles.md](board-roles.md) — styrelseroller
 - [oversight-roles.md](oversight-roles.md) — revisor och revisorssuppleant
 - [nominating-committee.md](nominating-committee.md) — valberedning
-- [meeting-roles.md](meeting-roles.md) — ephemerala mötesroller
+- [meeting-roles.md](meeting-roles.md) — flyktigt tillsatta mötesroller
 - [architecture.md](../architecture.md) — utskott, underfonder, huvudmanna-relation, `ExternalAdministrator`-konceptet
 - [editions/foraldraforening.md](../editions/foraldraforening.md) — klassrepresentant och utskott i skol-FF-kontext
 
 ## Principer
 
 1. **Attribut framför rolexplosion.** En person som är kassör, firmatecknare och sammankallande i eventkommittén har tre attribut på en kassör-roll — inte tre distinkta roller.
-2. **Lag- eller stadgestyrd grund krävs för förstklassig status.** Firmatecknare är lagligt definierat begrepp men följer styrelseledamot (ingen särskild tilldelning i stämman). Kommittéledamot är stämma-vald men inom en avgränsad kontext (utskottet). ExternalAdministrator är avtalstyrd och icke-vald.
+2. **Lag- eller stadgestyrd grund krävs för primär status.** Firmatecknare är lagligt definierat begrepp men följer styrelseledamot (ingen särskild tilldelning i stämman). Kommittéledamot är stämma-vald men inom en avgränsad kontext (utskottet). ExternalAdministrator är avtalstyrd och icke-vald.
 3. **Attribut bär egen audit.** Även om det är flaggor loggas tilldelning och upphörande — en firmatecknare som slutade 2024 ska synas i historiken om någon granskar en signatur från den tiden.
 
 ## Firmatecknare
@@ -64,7 +64,7 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 
 ## ExternalAdministrator
 
-- **Stödnivå:** förstklassig (egen rollnyckel, ej attribut).
+- **Stödnivå:** primär (egen rollnyckel, ej attribut).
 - **Lag- och stadge-grund:** Avtalstyrd. Stadgarna kan tillåta/förbjuda, men själva rollen är ett externt avtal — inte ett val på stämman.
 - **Ansvar:** Sköter delar av ekonomiförvaltningen enligt avtalets scope — bokföring, fakturering, årsredovisning eller hela ekonomin. **Inget beslutsmandat.**
 - **Hur stödjs:** Tidsbegränsat `RoleAssignment` med `scope: FINANCIAL_*` och `validUntil: <avtalets slutdatum>`. Läs/skriv mot ekonomiska vyer enligt scope; läs övrigt; skriv inga beslut.
@@ -75,7 +75,7 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 
 ## Medlem (bas-roll)
 
-- **Stödnivå:** förstklassig — alla registrerade i föreningen har denna roll.
+- **Stödnivå:** primär — alla registrerade i föreningen har denna roll.
 - **Lag- och stadge-grund:** LEF 6:3 (rösträtt på stämma), LFS 36§ (sakägare i samfällighet), föreningsstadgar.
 - **Ansvar:** Rösta på stämma, följa stadgarna, betala avgifter där relevant.
 - **RBAC-kärna:** Rösträtt vid stämma (enligt röstmodell, se [core-concepts.md#röstning](../core-concepts.md#röstning)); motionsrätt ([case-types.md](../case-types.md)); läsrätt på publicerade beslut, stadgar, protokoll och anslagstavla.

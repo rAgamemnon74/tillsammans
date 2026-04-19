@@ -22,7 +22,7 @@ En valberedningsledamot bör inte samtidigt vara styrelseledamot. Självnomineri
 
 ## Valberedningsledamot
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** Föreningsstadgar. Obligatorisk i alla observerade föreningar (12 föräldraföreningar + 10 samfälligheter).
 - **Ansvar:** Tillsammans med övriga valberedningsledamöter — inventera sittande förtroendevalda, intervjua kandidater, föreslå en samlad valslista till stämman.
 - **RBAC-kärna:**
@@ -36,7 +36,7 @@ En valberedningsledamot bör inte samtidigt vara styrelseledamot. Självnomineri
 
 ## Valberedningens sammankallande
 
-- **Stödnivå:** förstklassig. `[ÖPPEN]` möjlig degradering till attribut `convener: true` på en valberedningsledamot.
+- **Stödnivå:** primär. `[ÖPPEN]` möjlig degradering till attribut `convener: true` på en valberedningsledamot.
 - **Lag- och stadge-grund:** Stadgar namnger rollen specifikt i vissa föreningar; tradition i andra.
 - **Ansvar:** Kalla valberedningen till arbete, representera gruppen utåt mot styrelsen och medlemmarna, säkerställa att det samlade förslaget är klart i tid inför kallelsen till stämman.
 - **RBAC-kärna:** Som övriga valberedningsledamöter plus rätt att öppna nomineringsperiod, stänga den vid angiven tidpunkt, och publicera gruppens konsensus-förslag.

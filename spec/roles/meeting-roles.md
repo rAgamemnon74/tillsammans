@@ -14,7 +14,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 
 ## Principer
 
-1. **Ephemerala tilldelningar.** Mötesrollen gäller bara för det specifika mötet. Ingen kvarstående behörighet efteråt.
+1. **Flyktiga tilldelningar.** Mötesrollen gäller bara för det specifika mötet. Ingen kvarstående behörighet efteråt.
 2. **Separation från stående roller är lagkrav.** LEF 6:19 och LFS 49§ föreskriver att stämman *själv väljer* sin mötesordförande — stadgarna kan inte förbestämma att föreningens ordförande alltid är mötesordförande. Systemet ska inte heller göra det.
 3. **Fyra roller, inte fler.** Lagen och normalstadgorna namnger mötesordförande, mötessekreterare, protokolljusterare och rösträknare. Andra "roller" vid mötet (t.ex. tidhållare, teknisk support) är inte formella.
 4. **Alla mötesroller kan sammanfalla.** En ordförande kan väljas till mötesordförande; en sekreterare till mötessekreterare. Två justerare kan vara vilka närvarande medlemmar som helst. Men *valet* är fortfarande stämmans, loggat i protokollet.
@@ -22,7 +22,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 
 ## Mötesordförande
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6:19, LFS 49§. Stämman ska välja mötesordförande som första punkt.
 - **Ansvar:** Leda stämman. Föredra dagordning, ge och återta ordet, föreslå propositionsordning, genomföra omröstningar, förkunna resultat. Har i praktiken "mötesklubban".
 - **RBAC-kärna (under mötet):** Etablera röstlängden tillsammans med stämman (se [core-concepts.md#röstlängdsetablering](../core-concepts.md#röstlängdsetablering--processen-vid-stämmans-öppnande)); markera omröstningar som öppnade/avslutade; förkunna beslut; markera bordläggning på stämmans begäran.
@@ -33,7 +33,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 
 ## Mötessekreterare
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6:25, LFS 49§.
 - **Ansvar:** Föra protokollet vid stämman. Får ordet för att läsa upp förslag, beslutstexter och omröstningsresultat vid behov.
 - **RBAC-kärna (under mötet):** Skriva i mötesprotokollet; markera deltagare som närvarande/frånvarande löpande; registrera omröstningsresultat när mötesordföranden förkunnar.
@@ -43,7 +43,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 
 ## Protokolljusterare
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6:26, LFS 49§. Stämman väljer typiskt två justerare — ofta kallade *"justeringsmän"* eller *"justerare"*; *"rösträknare"* kan väljas som kombinerad roll (se nedan).
 - **Ansvar:** Granska protokollets överensstämmelse med det som faktiskt inträffade på stämman. Underteckna protokollet jämte mötesordförande när de är nöjda.
 - **RBAC-kärna (under mötet):** Läsa protokollutkastet löpande; lägga kommentarer/invändningar på enskilda punkter utan att blockera mötets gång.
@@ -54,7 +54,7 @@ Mötesroller väljs **per stämma** (eller per styrelsemöte) och är formellt d
 
 ## Rösträknare
 
-- **Stödnivå:** förstklassig.
+- **Stödnivå:** primär.
 - **Lag- och stadge-grund:** LEF 6:19, stadgar. Oftast valda i början av stämman.
 - **Ansvar:** Räkna röster vid sluten omröstning, vid räknad votering, eller när mötesordföranden begär. Ofta samma personer som justerarna — men rollen är formellt separat.
 - **RBAC-kärna (under mötet):** Vid sluten omröstning: se individuella röstsedlar i digital form, genomföra räkningen, meddela resultatet till mötesordföranden. Se total röstvikt per alternativ när andelsmetod används.
