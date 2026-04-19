@@ -43,6 +43,19 @@ Detta är rollerna utanför den stående styrelsen och mötets egna roller. De f
 - **Ansvar:** Samma som vanlig utskottsmedlem plus ansvaret att kalla till möten och lämna rapporten till styrelsen.
 - **`[ÖPPEN]`:** Ska utskotts-ordförandens signering räknas som firmateckning *för utskottsbeslut inom mandatet*? Förslag: ja, inom takbeloppet; över takbeloppet krävs styrelsens firmatecknare.
 
+## Medlemsansvarig
+
+- **Stödnivå:** attribut på en styrelseledamot (`medlemsansvarig: true`).
+- **Lag- och stadge-grund:** Stadgebeslut eller permanent styrelsemandat som delegerar godkännande av medlemsansökningar. Inte lagstyrt; rent praktisk organisering.
+- **Ansvar:** Granska och godkänna inkomna medlemsansökningar inom delegeringsmandatet. Föreslå avslag vid tveksamhet. Eskalera till fullständig styrelse vid kontroversiella fall eller ärenden som rör stadgetolkning.
+- **Hur stödjs:** `RoleAssignment` på en styrelseledamot får en `memberApprovalAuthority`-flagga. Vid aktiv flagga får personen behörighet att skriva `MEDLEMSKAP_GODKÄNT` och `MEDLEMSKAP_AVSLAGET` utan styrelsebeslut — men alla sådana beslut läses av övriga styrelseledamöter och revisorn i granskningsloggen.
+- **Typiska mönster:** I skol-FF med 300+ vårdnadshavare är rollen typiskt sekreteraren eller en ledamot med ansvar för föräldragruppen. I mindre föreningar är mandatet ofta hos ordförande eller kassör. I samfälligheter är det vanligen ordföranden som registrerar ägarbyten.
+- **Edition-avvikelser:** Mest praktiskt relevant i skol-FF (där ansökningsvolymen är hög). I samfällighet blir rollen mer av "ägarbytes-registrerare". I LEF med formell ansökningsprocess behövs den ofta för att inte överbelasta styrelsemöten.
+- **Hot att skydda:** Maktkoncentration — om medlemsansvarig ensidigt avslår eller godkänner utan spårbarhet. Mitigeras av att alla beslut är synliga för övriga styrelseledamöter och revisor i granskningsloggen; att eskalerings-tröskel finns; att mandatet kan återkallas av styrelsen.
+- **`[ÖPPEN]`:** Mandatets kvantitativa räckvidd (max antal beslut per period innan återrapportering)? Förslag: stadgan/föreningen bestämmer; systemet rapporterar siffror löpande oavsett.
+
+Se [medlemskap.md#delegerat-godkännande---medlemsansvarig](../medlemskap.md#delegerat-godkännande--medlemsansvarig) för processens helhet.
+
 ## Klassrepresentant
 
 - **Stödnivå:** attribut på en medlem (föräldraförenings-specifikt).

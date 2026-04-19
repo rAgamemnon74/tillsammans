@@ -70,6 +70,20 @@ Samfälligheter bildade före 2000-talet har ofta 20+ år gamla stadgar som mots
 
 Vissa föreningar vill att GA-specifika beslut alltid använder andelstal för just den GA:n, utan att någon behöver begära det. Detta är stadge-beslut, inte default. Används när en multi-GA-förening vill att vägfrågor automatiskt viktas efter väg-GA:s andelstal.
 
+### Ägarformer — fysisk, juridisk, dödsbo, kommun
+
+Samfällighetens fastighetsägare är en **blandad kår**. Juridisk person (aktiebolag, stiftelse, kommun) är normalt förekommande, inte undantag:
+
+- **Privatpersoner** dominerar antalsmässigt.
+- **Aktiebolag** som äger kontors-, industri- eller uthyrningsfastigheter.
+- **Ekonomiska föreningar** som äger kooperativa hyresrättshus.
+- **Stiftelser** som äger institutionsfastigheter (skola, hemvärnsgård).
+- **Kommuner** — vanligt när allmänna byggnader eller ytor ingår i området.
+- **Bank** som tillfälligt innehar efter exekutiv auktion.
+- **Dödsbo** som övergångsform mellan ägare.
+
+Modellering (Actor-abstraktion, Representation, mandat-verifiering) specificeras i [medlemskap.md#juridisk-person-som-medlem](../medlemskap.md#juridisk-person-som-medlem). Mandatverifikation vid stämma är del av röstlängdsetableringen — se [core-concepts.md#röstlängdsetablering](../core-concepts.md#röstlängdsetablering--processen-vid-stämmans-öppnande). Samägande mellan fysisk och juridisk person hanteras enligt [samägda fastigheter](#samägda-fastigheter) nedan.
+
 ### Samägda fastigheter
 
 - **`UNIFIED` (default)** — fastigheten avger en samlad röst med hela sitt andelstal. Enas inte ägarna internt avges ingen röst. Matchar Torpa Skogs §19 *"en per fastighet"*.

@@ -82,6 +82,7 @@ Röstlängden är ett snapshot vid kallelse, men **slutgiltig etablering sker n�
 - **Närvarokontroll** — vilka är faktiskt närvarande (fysiskt/digitalt)?
 - **Fullmaktskontroll** — presenterade fullmakter granskas och loggas.
 - **Representationsfrågor** — vem röstar för samägd fastighet / dödsbo / juridisk person?
+- **Mandatverifiering för juridisk person** — representantens bemyndigande (Bolagsverket-utdrag, fullmakt, styrelseprotokoll, delegationsordning) granskas av mötesordförande eller särskilt utsedd person. Mandat som är för gamla, oklara eller tvistiga kan föranleda att mötesordföranden begär nytt dokument eller att representationen inte godkänns för just denna stämma. Vid *"i förening"*-mandat krävs närvaro av samtliga representanter för att rösten ska kunna avges. Se [medlemskap.md#juridisk-person-som-medlem](medlemskap.md#juridisk-person-som-medlem).
 - **Vårdnadshavare-oklarheter** — om någon utöver registrerade vårdnadshavare hävdar rösträtt för ett barn.
 
 **Principen: Tillsammans löser inga civilrättsliga tvister — föreningen ska kunna komma vidare.** Oklara fall dokumenteras (vem hävdade vad, varför), rösten för den fastigheten/barnet avges inte den stämman, parterna hänvisas till rätt forum (domstol, familjerätt, Lantmäteri). Sedan kör stämman vidare på de klara fallen.
