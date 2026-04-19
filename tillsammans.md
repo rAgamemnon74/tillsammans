@@ -16,6 +16,12 @@ Specifikationen är uppdelad i sektioner under `spec/`. Det här dokumentet är 
 - **[Granskningslogg](spec/granskningslogg.md)** — *ladda när:* arbete med händelseloggens struktur, räkenskapsårs-epoker, transaktionstyper, integritetslager (hash-kedja + OpenTimestamps), rättelser och retroaktiva tillägg till stängt år, eller revisorns granskningsmekanik.
 - **[Möten — strukturer och dagordningsmallar](spec/moten.md)** — *ladda när:* arbete med styrelsemöten, ordinarie årsstämma eller extra stämma — dagordningsmallar, stadge-driven anpassning, stadgeparagraf-typer med automatiskt systemstöd, mötets livscykel i granskningsloggen.
 - **[Närvaro och röstlängd](spec/rostlangd.md)** — *ladda när:* arbete med närvarokontroll vid styrelsemöte (digital), röstlängd vid stämma (pappers + skannad bilaga), KVORUM-paragrafen, eller per-mötestyp-skillnaderna i loggning.
+
+### Krav-dokument (`spec/krav/`)
+
+Specifikationer av *vad* systemet ska göra utan att binda upp *hur*. Implementationsvalen detaljeras i respektive feature-fil.
+
+- **[Krav: Mötesadministration](spec/krav/motesadministration.md)** — *ladda när:* design eller validering av spec som rör möten, dagordningar, protokoll, beslut, närvaro, röstning eller mötesintegrationer ska ske; krav-IDn (`K-XXX-N`) är spårbara mot kommande implementation.
 - **[Ärendetyper](spec/case-types.md)** — *ladda när:* arbete med ärendebibliotekets gemensamma livscykel- och textmallsbiblioteket, eller med motionen som referens-implementation. Specifika ärendetyper har egna filer (se nedan).
 - **[Styrelseroller](spec/roles/board-roles.md)** — *ladda när:* arbete med ordförande, vice ordförande, sekreterare, kassör, ledamot eller suppleant — deras RBAC, ansvar eller vakans-hantering.
 - **[Revisionsroller](spec/roles/oversight-roles.md)** — *ladda när:* arbete med revisor eller revisorssuppleant — deras permanenta läsrätt, granskningsuppdrag och konstitutionella oberoende från styrelsen.
