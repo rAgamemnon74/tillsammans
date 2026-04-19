@@ -71,6 +71,10 @@ Två situationer att hantera:
 1. **En person är både styrelseledamot och valberedningsledamot.** Tekniskt tillåtet om stadgan inte uttryckligen förbjuder, men systemet varnar vid tilldelning och föreslår att personen avsäger sig den ena rollen.
 2. **En valberedningsledamot föreslår sig själv till styrelsen.** Systemet flaggar förslaget med *"valberedningsledamot nominerad till styrelsen — stämman bör beakta självjävet"* i publik förslagsvy. Stämman avgör; flaggan är informativ, inte blockerande.
 
+## Läsrätt efter mandatet
+
+Tidigare valberedningsledamöter behåller läsrätt till sin egen arbetsyta för de epoker de var aktiva under, enligt den generella principen för förtroendevalda — se [föreningen.md#historisk-läsrätt-efter-mandatet](../föreningen.md#historisk-läsrätt-efter-mandatet). Mindre juridiskt skarp fråga än för styrelse och revisor, men kan vara relevant om en nominering i efterhand ifrågasätts.
+
 ## Öppna frågor
 
 - **Självnominering utan valberedningens medverkan.** En medlem kan själv anmäla sig direkt på stämman som kandidat, förbi valberedningens förslag — svensk praxis: det kan inte förbjudas. Systemet ska stödja bägge vägarna.

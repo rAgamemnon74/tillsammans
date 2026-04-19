@@ -116,6 +116,12 @@ Denna tabell är en orientering, inte en fullständig permission-modell. Kolumn-
 - **Utskotts-/kommittéordförande** → attribut inom ett utskott; [other-roles.md#utskotts-och-kommittéledamot](other-roles.md#utskotts-och-kommittéledamot).
 - **Klassrepresentant** (föräldraförening) → attribut på en medlem; [other-roles.md#klassrepresentant](other-roles.md#klassrepresentant). Inte styrelsepost.
 
+## Läsrätt efter mandatet
+
+Tidigare styrelseledamöter behåller **permanent läsrätt** till de epoker de var aktiva under — deras juridiska ansvar sträcker sig bortom mandatet (klandertalan, skadeståndsfråga, upphävd ansvarsfrihet kan aktualiseras år senare). Den personliga exponerings-vyn (egna röster, reservationer, jävsdeklarationer) kvarstår permanent som juridisk dokumentation.
+
+Principen är tvärgående över alla förtroendevalda roller och beskrivs i [föreningen.md#historisk-läsrätt-efter-mandatet](../föreningen.md#historisk-läsrätt-efter-mandatet).
+
 ## Öppna frågor
 
 Utöver de `[ÖPPEN]` som markerats per roll:

@@ -59,6 +59,8 @@ Stämman kan entlediga en revisor och välja en ny (LEF 8:9). Systemet hanterar 
 - Den nya revisorns rättigheter aktiveras från entledigande-datumet.
 - **Den entledigade revisorns läsrätt på data från sin mandatperiod kvarstår** eftersom den kan behöva svara på stämmans frågor. Teknisk detalj: `RoleAssignment.readAccessEndsAt` skiljs från `RoleAssignment.mandateEndsAt`.
 
+Detta är ett konkret fall av den generella principen att tidigare förtroendevalda behåller permanent läsrätt till sina egna epoker — se [föreningen.md#historisk-läsrätt-efter-mandatet](../föreningen.md#historisk-läsrätt-efter-mandatet) för fullständig rammodell.
+
 ## Öppna frågor
 
 - **Närståendekontroller.** Systemet vet inte automatiskt om en revisor är släkt eller nära affärspartner till en styrelseledamot. Förslag: begär aktiv deklaration vid revisors-tilldelning, jämförbart med jävsdeklaration.
