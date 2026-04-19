@@ -59,6 +59,44 @@ Tillsammans designas för denna dubbelhet:
 
 ## Årshjulet — integrerat flöde
 
+Följande illustration visar hur de två periodernas aktiviteter överlappar. Exemplet utgår från kalenderår (1/1–31/12); för brutet läsårsföljande eller fritidshus-säsong förskjuts datumen enligt stadgans räkenskapsår-inställning.
+
+```mermaid
+gantt
+    title Verksamhetsårets rytm (exempel: kalenderår)
+    dateFormat YYYY-MM-DD
+    axisFormat %b
+
+    section Föregående period (N-1)
+    Bokslut (kassör)              :2026-01-02, 60d
+    Revision                      :2026-03-01, 45d
+    Revisionsberättelse           :milestone, 2026-04-15, 0d
+    Styrelsemöte om dagordning    :2026-04-05, 14d
+    Kallelse utskickad            :milestone, 2026-04-20, 0d
+    Beredning av motioner         :2026-04-20, 21d
+    Årsstämma                     :crit, 2026-05-15, 1d
+    EPOK_FÖRSEGLAD                :crit, milestone, 2026-05-16, 0d
+    Protokollsjustering           :2026-05-16, 21d
+    Bolagsverket-inlämning (LEF)  :milestone, 2026-07-15, 0d
+
+    section Innevarande period (N)
+    EPOK_ÖPPNAD                   :milestone, 2026-01-01, 0d
+    Löpande styrelsearbete        :active, 2026-01-01, 365d
+    Q1 ekonomi-uppföljning        :2026-04-01, 7d
+    Ny styrelse konstitueras      :2026-05-16, 21d
+    Q2 ekonomi-uppföljning        :2026-07-01, 7d
+    Q3 ekonomi-uppföljning        :2026-10-01, 7d
+    Budget för nästa år           :2026-11-01, 30d
+```
+
+Diagrammet visar tre centrala observationer:
+
+- **Parallelliteten.** Under månad 1–5 pågår bokslut–revision–stämmoberedning (föregående period) *samtidigt* som det löpande styrelsearbetet (innevarande period). Samma personer, två arbetsytor.
+- **Sigillmilstolpen.** `EPOK_FÖRSEGLAD` och årsstämman sammanfaller — sigillet är stämmans beslut om ansvarsfrihet. Efter det är föregående-spåret avvecklat.
+- **Efterarbetet sträcker sig förbi sigillet.** Protokollsjustering tillhör fortfarande föregående epok (som sluthändelse), medan Bolagsverket-inlämningen för LEF sker i innevarande epok med föregående års underlag.
+
+Resten av sektionen går igenom varje tidspunkt i detalj med event-typer och epok-tillhörighet.
+
 Tidsaxeln nedan räknas i månader *efter räkenskapsårets slut* (= start på innevarande period = epok N). För varje tidpunkt anges vad som pågår parallellt i bägge perioder.
 
 ### Månad 0 — räkenskapsåret skiftar
