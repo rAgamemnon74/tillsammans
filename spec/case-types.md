@@ -276,45 +276,29 @@ Se [threats.md#taktisk-motionsgivning](threats.md). Specifika motion-försvar:
 
 ---
 
-## Stubbar — övriga ärendetyper
+## Ärendetyper-katalog
 
-Dessa följer samma mall som motionen men är ännu inte utarbetade. Fångade här för att inte glömmas och för att visa ärendebibliotekets räckvidd.
+Motionen ovan dokumenteras inline som referens-implementation. De övriga 12 ärendetyperna är dokumenterade i egna filer under [case-types/](case-types/) — varje fil följer samma mall och refererar tillbaka till den gemensamma infrastrukturen ovan istället för att duplicera mekanik.
 
-### Styrelseförslag
+| # | Ärendetyp | Edition | Kort om |
+|---|---|---|---|
+| 1 | [Styrelseförslag](case-types/styrelseforslag.md) | bägge | Som motion men styrelsen är initiator. Inget yttrande-spår — styrelsens position *är* förslaget. Stämmoärende. |
+| 2 | [Medlemsansökan](case-types/medlemsansokan.md) | LEF | Formell ansökan om inträde. Refererar [medlemskap.md](medlemskap.md) för livscykel. Medlemsansvarig som beslutsfattare; styrelse vid eskalering; stämman vid överklagan (LEF 4:3). |
+| 3 | [Ägarövergång](case-types/agarovergang.md) | samfällighet | Trigger: ägarbyte av fastighet. Registrerings-ärende, inget formellt beslut. Hanterar `MEDLEMSKAP_ÖVERGÅTT` + båda aktörers status-ändring. |
+| 4 | [Uteslutningsärende](case-types/uteslutning.md) | primärt LEF | Personärende, starkast GDPR-känsligt. Obligatorisk varnings-fas + svarsfönster. Stämmoöverklagan-rätt. Avgränsad insyn. |
+| 5 | [Utläggsgodkännande](case-types/utlaggsgodkannande.md) | bägge | Kassörens kärnflöde. Obligatorisk koppling till underliggande styrelsebeslut + stadga. Eskalation vid jäv eller över belopp. |
+| 6 | [Stadgeändring](case-types/stadgeandring.md) | bägge | Två-stämmo-flöde (LEF 6:36 / LFS 52§). Två AVGJORD-tillstånd. Diff mot stadge-modul. Samtyckes-förnyelse vid väsentlig ändring. |
+| 7 | [Revisorsfråga](case-types/revisorsfraga.md) | bägge | Initiator: revisor. Iterativ kommunikation, inget formellt beslut. Låg tröskel — får inte kännas som kritik. |
+| 8 | [Kandidatnominering](case-types/kandidatnominering.md) | bägge | Initiator: valberedning eller medlem (självnominering). Bekräftelse-fas där kandidaten samtycker. Konfidentialitet för avvisade kandidater. |
+| 9 | [Mandatverifiering](case-types/mandatverifiering.md) | primärt samfällighet | Granskning av juridisk persons representant — Bolagsverket-utdrag/fullmakt/styrelseprotokoll. `MANDAT_VERIFIERAT`-händelse. |
+| 10 | [Extrastämma — kallelsebegäran](case-types/extrastamma.md) | bägge | Initiator: medlemsgrupp (X% per stadga, LEF 6:13/LFS 47§), styrelsen eller revisor. Skyldighets-ärende — styrelsen kan inte avslå giltig begäran. |
+| 11 | [Allmänt ärende](case-types/allmant_arende.md) | bägge | Diarieförd kanal: klagomål / förslag / fråga / synpunkt / ersättningsanspråk. Obligatorisk underkategori. Publicering varierar per kategori. |
+| 12 | [Upphandlingsärende](case-types/upphandling.md) | bägge | Jäv-deklaration *vid initiering*. Bilage-tunga (offerter, specifikationer). Stadge-bestämda tröskelbelopp för stämmobeslut. |
 
-Som motion men med styrelsen som initiator. Inget yttrande-spår — styrelsens ställning *är* förslaget. Samma publik transparens. Stubb.
+### Övergripande mekanismer som inte är egna ärendetyper
 
-### Medlemsansökan
-
-Ny medlem söker inträde → styrelse- eller medlemsansvarig-beslut. Primärt för LEF (samfällighet triggas av ägarbyte, inte ansökan). Stadgaförankring: medlemskriterier. Livscykel, datauppsättning och gallringsregler specas i [medlemskap.md](medlemskap.md). **GDPR:** persondata under beredning är endast synlig för styrelsen. **Ton:** välkomstmallar, avslag med saklig grund och besvärshänvisning. Stubb — textbiblioteket utarbetas när ärendetypen fullt detaljeras.
-
-### Uteslutningsärende
-
-**Personärende — starkaste GDPR-känsligheten i biblioteket.** Initiator: styrelsen (eller stadgekrav vid utebliven avgift). Stadgeförankring obligatorisk. Livscykel med flera spärrar: `VARNING → SVARSFÖNSTER → BEREDNING → STYRELSEBESLUT → (ev. STÄMMOPRÖVNING)`. **Publicering: ej publik.** Endast berörd medlem, styrelse och revisor. **Ton i mallar:** sakliga, proportionerliga, med tydlig besvärshänvisning — *aldrig* anklagande formuleringar. Hanteringen ska följa god sed även när ärendet gäller allvarlig konflikt. Stubb.
-
-### Utläggsgodkännande
-
-Kassörens kärnflöde ([architecture.md#kärnmoduler](architecture.md#kärnmoduler) punkt 3). Initiator: medlem eller styrelseledamot som lagt ut egna pengar. Obligatorisk koppling till (a) underliggande styrelsebeslut som auktoriserar utgiften, (b) stadgaparagraf. Revisor har permanent läsrätt. Livscykel: `INLÄMNAD → KASSÖR_GRANSKAR → (BESLUT_SAKNAS → tillbaka till styrelse) → GODKÄND → EXPORTERAD_TILL_BOKFÖRING`. **Publicering:** aggregerad publik rapport per kvartal (belopp + kategori + beslutslänk, inte personuppgifter). Stubb.
-
-### Stadgeändring
-
-Två-stämmo-krav enligt LEF 6:36 / LFS 52§ (specifika majoriteter per lagrum). Egen livscykel med *två* beslutssteg, vart och ett en AVGJORD-status. Relation till stadge-modulen via textdiff — ändringen visas sida-vid-sida med befintlig text. Särskilt viktigt att *båda* stämmobeslut audittas + att stadge-modulens versionshistorik (se [mission.md](mission.md)) reflekterar ändringen först efter andra stämmobeslutet. Stubb.
-
-### Revisorsfråga
-
-Initiator: `AUDITOR`. Adressat: styrelsen. Används löpande under räkenskapsåret, inte bara i revisionsberättelsen. Låg tröskel för revisor att ställa frågor utan att det känns som kritik. **Ton:** mallar för både revisor ("jag vill förstå ...") och styrelsesvar ("följande beslut låg till grund för ..."). Relation till revisionsberättelse vid räkenskapsårets slut. Stubb.
-
-### Kandidatnominering
-
-Initiator: valberedning, eller medlem som självnominerar. Publiceringsregler: publik inför stämman (namn + position, samtyckesgrundat). Livscykel kopplad till `NominationPeriod` (Hemmets modellnamn, anpassas). **Ton:** varken tryck ("vi räknar med dig") eller avrådan — neutralt förfrågningsspråk. Stubb.
-
-### Bordläggning
-
-*Inte egen ärendetyp — tillståndsövergång som fungerar på alla ärendetyper.* Se [core-concepts.md#bordläggning](core-concepts.md#bordläggning). Refererad här för navigerbarhet.
-
-### Jävsdeklaration
-
-*Inte egen ärendetyp — attribut på deltagande i beslut.* Se [core-concepts.md#jäv](core-concepts.md#jäv). Refererad här för navigerbarhet.
+- **Bordläggning** — tillståndsövergång som fungerar på alla ärendetyper. Se [core-concepts.md#bordläggning](core-concepts.md#bordläggning).
+- **Jävsdeklaration** — attribut på deltagande i beslut, inte eget ärende. Se [core-concepts.md#jäv](core-concepts.md#jäv-conflict-of-interest).
 
 ---
 

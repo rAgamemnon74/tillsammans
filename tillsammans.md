@@ -14,12 +14,30 @@ Specifikationen är uppdelad i sektioner under `spec/`. Det här dokumentet är 
 - **[Arkitektur, MVP och kärnmoduler](spec/architecture.md)** — *ladda när:* scope-diskussioner (in/ut), typ-anpassning vs. typ-läckage, MVP-strategi, eller prioritering mellan kärnmoduler.
 - **[Kärnkoncept](spec/core-concepts.md)** — *ladda när:* arbete med "Ni lovade"-flödet, röstning (huvudmetod/andelsmetod), jäv, reservation/solidariskt ansvar, bordläggning, kallelsemodell, anslagstavla.
 - **[Granskningslogg](spec/granskningslogg.md)** — *ladda när:* arbete med händelseloggens struktur, räkenskapsårs-epoker, transaktionstyper, integritetslager (hash-kedja + OpenTimestamps), rättelser och retroaktiva tillägg till stängt år, eller revisorns granskningsmekanik.
-- **[Ärendetyper](spec/case-types.md)** — *ladda när:* arbete med motioner, medlemsansökan, uteslutning, utläggsgodkännande, stadgeändring, revisorsfråga, kandidatnominering — eller med det gemensamma livscykel- och textmallsbiblioteket för ärenden.
+- **[Ärendetyper](spec/case-types.md)** — *ladda när:* arbete med ärendebibliotekets gemensamma livscykel- och textmallsbiblioteket, eller med motionen som referens-implementation. Specifika ärendetyper har egna filer (se nedan).
 - **[Styrelseroller](spec/roles/board-roles.md)** — *ladda när:* arbete med ordförande, vice ordförande, sekreterare, kassör, ledamot eller suppleant — deras RBAC, ansvar eller vakans-hantering.
 - **[Revisionsroller](spec/roles/oversight-roles.md)** — *ladda när:* arbete med revisor eller revisorssuppleant — deras permanenta läsrätt, granskningsuppdrag och konstitutionella oberoende från styrelsen.
 - **[Valberedning](spec/roles/nominating-committee.md)** — *ladda när:* arbete med valberedningens ledamöter eller sammankallande — nominerings-flödet, arbetsytan, självjäv-hantering och oberoendet från styrelsen.
 - **[Mötesroller](spec/roles/meeting-roles.md)** — *ladda när:* arbete med mötesordförande, mötessekreterare, protokolljusterare eller rösträknare — deras flyktiga tilldelning per stämma, signering, och separation från stående roller.
 - **[Övriga roller](spec/roles/other-roles.md)** — *ladda när:* arbete med firmatecknare, utskotts-/kommittéledamot, fond-kontaktperson, `ExternalAdministrator` eller bas-rollen medlem/sakägare.
+
+### Ärendetyper-katalog (`spec/case-types/`)
+
+Specialiserade ärendetyper specificerade i egna filer; alla bygger på gemensam infrastruktur i [case-types.md](spec/case-types.md). Motion dokumenteras inline där som referens-implementation.
+
+- **[Styrelseförslag](spec/case-types/styrelseforslag.md)** — *ladda när:* styrelsen lägger fram eget förslag till stämman; ingen yttrande-spår.
+- **[Medlemsansökan](spec/case-types/medlemsansokan.md)** — *ladda när:* LEF-formell ansökningsprocess; medlemsansvarig, eskalering, överklagan till stämma (LEF 4:3).
+- **[Ägarövergång](spec/case-types/agarovergang.md)** — *ladda när:* samfällighets ägarbyte registreras; `MEDLEMSKAP_ÖVERGÅTT`-händelse.
+- **[Uteslutningsärende](spec/case-types/uteslutning.md)** — *ladda när:* personärende med varning + svarsfönster; högsta GDPR-känsligheten.
+- **[Utläggsgodkännande](spec/case-types/utlaggsgodkannande.md)** — *ladda när:* kassörens kärnflöde; koppling till underliggande styrelsebeslut + stadga.
+- **[Stadgeändring](spec/case-types/stadgeandring.md)** — *ladda när:* två-stämmo-flöde (LEF 6:36 / LFS 52§); diff mot stadge-modul; samtyckes-förnyelse.
+- **[Revisorsfråga](spec/case-types/revisorsfraga.md)** — *ladda när:* revisorns iterativa kanal till styrelsen; låg tröskel.
+- **[Kandidatnominering](spec/case-types/kandidatnominering.md)** — *ladda när:* valberednings- och självnominering; samtyckes-fas; konfidentialitet för avvisade.
+- **[Mandatverifiering](spec/case-types/mandatverifiering.md)** — *ladda när:* juridisk persons representant verifieras; `MANDAT_VERIFIERAT`-händelse.
+- **[Extrastämma — kallelsebegäran](spec/case-types/extrastamma.md)** — *ladda när:* medlemsgrupp / styrelse / revisor begär extra stämma; skyldighets-ärende.
+- **[Allmänt ärende](spec/case-types/allmant_arende.md)** — *ladda när:* diarieförd kanal för klagomål / förslag / fråga / synpunkt / ersättningsanspråk.
+- **[Upphandlingsärende](spec/case-types/upphandling.md)** — *ladda när:* offertförfarande, jäv-deklaration vid initiering, stadge-bestämda tröskelbelopp för stämmobeslut.
+
 - **[Domänmodell, medlemsmodell och lapptäcket](spec/domain-model.md)** — *ladda när:* entitets-/relationsfrågor, medlemsmodell per typ, livscykel (`ACTIVE`/`LAPSED`/`EXCLUDED`, reconfirmation), eller dokumentkonflikter vid onboarding.
 - **[Teoriverifikation](spec/verification.md)** — *ladda när:* planering av stadgejämförelse, typscenarier, juridisk mappning, konflikt-simulering, eller diskussion om verifikations-tröskel före kod.
 - **[Analys-regler vid funktionsändringar](spec/analysis-rules.md)** — *ladda när:* ett förslag till ny funktion, spec-ändring eller designbeslut diskuteras — checklistan ska köras igenom innan förslaget accepteras.
