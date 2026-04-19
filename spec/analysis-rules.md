@@ -67,6 +67,20 @@ Tillsammans försvarar mot specifika governance-risker ([threats.md](threats.md)
 - **Governance-värde.** Bidrar funktionen till en *governance-sköld* (beslut, jäv, protokoll, röstlängd, kassörsstöd, audit) eller glider den in i operativ drift (bokningar, inventarier, event)?
 - **Scope-spill.** Om operativ — hänvisas den explicit till externt verktyg med export-integration, eller absorberas den tyst i plattformen?
 
+## Diagnostiska signaler — tolkning vid drift
+
+Analys-reglerna ovan används vid *designtid*. När systemet är i drift producerar det löpande signaler om ofullständighet — template-rendering-brister, vakanta roller, uteblivna protokoll-justeringar, ärenden som inte når beslut inom stadgans tidsfrist, debiteringslängder som inte balanserar. Dessa signaler ska tolkas enligt tre rot-orsaker:
+
+1. **Engagemang/ordningssinne.** Förtroendevalda hann inte, prioriterade inte, eller missade en rutin. Kräver inte systemförändring — kanske stöd och påminnelser, men inte teknik.
+2. **System-miss — saknad funktion.** Specen eller implementationen täcker inte det fall användaren behövde registrera. Åtgärden är att utvidga specen.
+3. **CX/UX-problem.** Funktionen finns men är för krånglig, otydlig eller kräver för mycket. Åtgärden är gränssnittsjustering — inte ny funktion.
+
+Att blanda ihop dessa leder till fel åtgärd: att skylla på styrelsen när det är ett system-miss, att bygga ny funktion när gränssnittet bara behöver förtydligas, eller att ändra gränssnittet när en funktion faktiskt saknas.
+
+**Signaler från systemet pekar på var problemet kan ligga — aldrig ut vem.** Stämpling av personer är uttryckligen utanför scope ([threats.md#det-systemet-inte-gör](threats.md)). Diagnostiken är en sorteringsmekanism vid drift och vid vidareutveckling.
+
+När en signal förekommer upprepat är det tecken på att en av de tre rot-orsakerna är aktiv och ska adresseras där — inte symptomatiskt på händelsesidan.
+
 ## Vad analys-reglerna *inte* är
 
 - **Inte personstämpling.** Ingen av reglerna används för att bedöma enskilda personer. De används för att bedöma om *systemet* har strukturella öppningar för missbruk.

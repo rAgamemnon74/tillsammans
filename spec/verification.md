@@ -58,6 +58,48 @@ För varje hot i [hotbilden](threats.md), konstruera konkret attack och spåra d
 **Test:** kan skyddsmekanismen bryta attacken, eller finns en kringgång?
 **Utfall:** kringgång → förstärk modellen innan kod skrivs.
 
+## Spår 5: Teknisk robusthet — integritets- och renderings-mekanik
+
+Utöver governance-verifikation ska den tekniska bärlagren testas separat och kontinuerligt (i CI, inte bara vid större releaser). Teknisk robusthet är försvaret bakom governance-integriteten.
+
+### Template-rendering
+
+Varje transaktionstyp i [granskningslogg.md](granskningslogg.md) har en mall som renderar fritext från systemdata. Testmatrisen:
+
+- Alla typer × alla giltiga systemdata-varianter renderar utan oväntade undantag.
+- Kantfall: tomma fält, oväntade fält, mycket långa texter, unicode-normaliseringar, null/undefined-värden, gränsvärden.
+- `template_incomplete`-flaggan sätts korrekt när mallen inte kan rendera alla fält.
+- Historiska mall-versioner testas via regressionstest — template v1 ska producera samma output 2046 som 2026 givet samma systemdata.
+- Svenska teckenkodning (åäö), långa meningar, bindestreck, citattecken hanteras korrekt i kanonisering.
+
+Denna testkategori minimerar risken att `template_incomplete` blir ett vanligt tillstånd på grund av defekt mall snarare än genuin ofullständighet i källdata.
+
+### Hash-kedjans integritet
+
+- Manipulation av metadata, fritext, systemdata eller bilaga-innehåll detekteras av verifieringskommandot.
+- Rättelse-poster och addenda bryter aldrig originalkedjan.
+- OTS-förankring är verifierbar mot Bitcoin-blockchain (mockad i testmiljö med lokal testblockchain).
+- Kanonisering är deterministisk — samma indata → samma hash, oavsett plattform, Postgres-version eller ordning på INSERT.
+
+### Schema-evolution
+
+- Gammal schema-version kan läsas med nyare kod utan data-tappande migration.
+- Nya scheman valideras mot bakåtkompatibilitets-regler före adoption.
+- `schema_hash` i metadata detekterar tyst schema-swap.
+
+### GDPR-gallring
+
+- Gallring av bilage-bytes bevarar hash-kedjan intakt.
+- Metadata + `innehålls_hash` överlever gallring.
+- Systemhanterad gallring triggar på rätt tidpunkt enligt ärendelivscykel.
+- Styrelsebeslut-kopplad extraordinär gallring kräver föregående `STYRELSEBESLUT` med motivering.
+
+### Addenda-kedjan
+
+- Addendum-händelser ändrar aldrig originalepokens hash-kedja.
+- Addendum-kedjans egen `prev_addendum_hash` är korrekt.
+- Alla fem legitima addendum-typer har giltig grund-validering.
+
 ## Verifikations-tröskel före implementation
 
 MVP-kod påbörjas inte förrän följande är dokumenterat:
