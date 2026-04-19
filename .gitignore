@@ -1,0 +1,30 @@
+# Claude Code lokal konfiguration
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Miljövariabler (framtida — ingen kod ännu)
+.env
+.env.local
+.env.*.local
+
+# Node (framtida)
+node_modules/
+dist/
+build/
+*.log
+
+# Python (om verktyg behövs för specifikationsarbete)
+__pycache__/
+*.pyc
+.venv/
+venv/
