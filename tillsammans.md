@@ -13,6 +13,7 @@ Specifikationen är uppdelad i sektioner under `spec/`. Det här dokumentet är 
 - **[Medlemskap](spec/medlemskap.md)** — *ladda när:* arbete med medlemsregistret, två processer (ägarövergång, formell ansökan), edition-specifik datauppsättning, personnummer-hantering, eller samtyckes-förnyelse vid stadgeändring.
 - **[Arkitektur, MVP och kärnmoduler](spec/architecture.md)** — *ladda när:* scope-diskussioner (in/ut), typ-anpassning vs. typ-läckage, MVP-strategi, eller prioritering mellan kärnmoduler.
 - **[Kärnkoncept](spec/core-concepts.md)** — *ladda när:* arbete med "Ni lovade"-flödet, röstning (huvudmetod/andelsmetod), jäv, reservation/solidariskt ansvar, bordläggning, kallelsemodell, anslagstavla.
+- **[Grunddata — loggen som grund, entiteter som projektion](spec/grunddata.md)** — *ladda när:* frågor om minimum-data för att starta systemet, förhållande mellan logghändelser och entiteter, genesis-händelserna, eller hur onboarding förhåller sig till gradvis data-ackumulering.
 - **[Granskningslogg](spec/granskningslogg.md)** — *ladda när:* arbete med händelseloggens struktur, räkenskapsårs-epoker, transaktionstyper, integritetslager (hash-kedja + OpenTimestamps), rättelser och retroaktiva tillägg till stängt år, eller revisorns granskningsmekanik.
 - **[Möten — strukturer och dagordningsmallar](spec/moten.md)** — *ladda när:* arbete med styrelsemöten, ordinarie årsstämma eller extra stämma — dagordningsmallar, stadge-driven anpassning, stadgeparagraf-typer med automatiskt systemstöd, mötets livscykel i granskningsloggen.
 - **[Närvaro och röstlängd](spec/rostlangd.md)** — *ladda när:* arbete med närvarokontroll vid styrelsemöte (digital), röstlängd vid stämma (pappers + skannad bilaga), KVORUM-paragrafen, eller per-mötestyp-skillnaderna i loggning.
@@ -65,6 +66,7 @@ Edition-filer dokumenterar det som är specifikt för en `AssociationType`. Kär
 Empirisk bakgrund till spec-beslut. Offentliga enligt [mission.md](spec/mission.md)s princip om granskningsbar governance.
 
 - **[Samfälligheter 2026-04](spec/verification-reports/samfalligheter-2026-04.md)** — 10 svenska samfällighetsföreningar analyserade mot specen (apr 2026). Vände samfällighets-rösten i [core-concepts.md](spec/core-concepts.md) (huvudmetod som default + 1/5-tak + fullmakts-regel), tillade `ExternalAdministrator`-rollen i [architecture.md](spec/architecture.md), och skapade samfällighets-editionen. Kvitterade [verification.md](spec/verification.md) Spår 1-tröskeln för samfälligheter.
+- **[Typscenarier samfällighet 2026-04](spec/verification-reports/typscenarier-samfallighet-2026-04.md)** — 11 typscenarier genomgångna mot specen (apr 2026). 27 luckor funna: 18 spec-brist, 5 modell-brist, 4 out-of-scope. Scenarier 5 ("Ni lovade") och 6 (jäv + bordläggning) höll utan luckor — kärnmekanismerna bär. Kvitterade [verification.md](spec/verification.md) Spår 2-tröskeln för samfälligheter. Rapporten ändrar ingen spec-fil; föreslår fem etapper (A-E) för spec-komplettering.
 
 ## Syskonprojekt
 

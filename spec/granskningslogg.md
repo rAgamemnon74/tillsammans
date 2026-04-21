@@ -531,9 +531,14 @@ Client-genererat `event_id` (UUIDv7) + unique-constraint garanterar att retry ef
 
 ## Gränsdragningar — vad granskningsloggen inte är
 
+Granskningsloggen innehåller **formella händelser** med tvingande rättslig grund (LEF/LFS-protokollföring) eller självvalt samtycke (reservation, publicerad motion). Den är inte uttömmande register för allt som händer i eller omkring föreningen. Se [mission.md#grund-policies](mission.md#grund-policies) policy 8 och [grunddata.md](grunddata.md) för helhetsramverket.
+
 - **Inte operativ data.** Mätvärden, bokningar, inventarier, skaderapporter, störningsanmälan — hanteras i externa verktyg ([architecture.md#utanför-scope](architecture.md)). Om ett beslut fattats om dem loggas *beslutet*, inte den operativa datamängden.
 - **Inte styrelsens interna utkast.** Draft-mode är friktionsfri; loggen börjar vid publicering. En lista där styrelsen brainstormar möjliga leverantörer ingår inte.
-- **Inte chattloggar eller informell kommunikation.** E-post och muntliga samtal mellan ledamöter är utanför systemet. Det som händer i systemet (anslagstavla, kommentarer på ärenden) loggas; resten är utanför scope.
+- **Inte chattloggar, kommentartrådar eller informell kommunikation.** E-post och muntliga samtal mellan ledamöter är utanför systemet. Anslagstavlan finns som enkelriktad push från styrelsen; fri kommentarfunktion eller diskussionstrådar på ärenden är inte del av systemet — föreningsdemokratisk debatt sker på stämman.
+- **Inte åsikter om personer.** Svensk rätt (Regeringsformen 2:3 + GDPR Art. 9) förbjuder åsiktsregistrering utan rättslig grund och samtycke. Personliga bedömningar av medlemmar/ledamöter/sökande hör i privat arbetsyta för respektive roll (se [grunddata.md](grunddata.md) *Tre persistens-nivåer*), inte i granskningsloggen.
+- **Inte rättsliga ställningstaganden.** Juridiska referenser (polisanmälnings-, åtals-, domnummer) lagras som data — offentliga handlingar — men systemet kategoriserar inte händelser som brott, varnar inte om misstänkta överträdelser och flaggar inte medlemmar som "problemfall" innan domstol har avgjort. "Oskyldig tills motsatsen bevisas."
+- **Inte privat arbetsyta.** Revisorns egna anteckningar, medlemsansvarigs beredningsnoter, valberedarens arbetsnoter är ägarens data. Systemet tillhandahåller arbetsytan; dess innehåll hör inte i föreningens granskningslogg.
 
 ## Öppna frågor
 

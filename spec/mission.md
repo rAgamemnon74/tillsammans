@@ -54,7 +54,11 @@ Principer som styr all spec-utveckling. Fördjupningar i de filer som refereras.
 5. **Governance-kärna, inte operativ plattform.** Detaljer i *Fastslagna beslut* nedan och i [architecture.md](architecture.md).
 6. **Normal människor, lekmannastyrelser, fritidsaktivitet.** Komplexiteten ligger i systemet, inte hos användarna. Initial installation ska rymmas på ~2 timmar med minimal dokumentuppsättning.
 7. **Gradvis nyttoackumulering.** Föreningen betalar komplexitets-kostnaden när funktionen faktiskt behövs. Varje installations-fas är självstående användbar — ingen allt-eller-inget-onboarding.
-8. **"Inte polis eller skatteverk."** Systemet validerar inte civilrättsliga frågor, moderniserar inte gamla stadgar, tvingar inte fram "rätt" beteende. Det dokumenterar och synliggör.
+8. **Inte polis, inte skatteverk, inte domstol, inte debatt-arena.** Systemet tar inte ställning. Fyra aspekter:
+   - *Inte tillsynsmyndighet* — validerar inte civilrättsliga frågor, moderniserar inte gamla stadgar, tvingar inte fram "rätt" beteende.
+   - *Rättslig agnostisism* — juridiska referenser (polisanmälnings-, åtals-, domnummer) behandlas som data (offentliga handlingar), inte som betyg. Systemet kategoriserar inte händelser som brott, varnar inte om misstänkta överträdelser, flaggar inte medlemmar som "problemfall" innan domstol har avgjort. "Oskyldig tills motsatsen bevisas" gäller även här.
+   - *Ingen åsiktsregistrering* — Regeringsformen 2:3 + GDPR Art. 9. Systemet persisterar inte åsikter om personer utan rättslig grund och samtycke. Det gäller både föreningens logg och eventuella sidokonstruktioner.
+   - *Inte debatt-as-a-service* — kommentartrådar, forum, "likes" på förslag är inte funktioner i systemet. Föreningsdemokratin sker på stämman; digitalt gränssnitt ersätter den inte och urholkar den inte.
 
 ### Hot- och skydds-modell
 
