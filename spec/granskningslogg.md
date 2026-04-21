@@ -531,14 +531,13 @@ Client-genererat `event_id` (UUIDv7) + unique-constraint garanterar att retry ef
 
 ## Gränsdragningar — vad granskningsloggen inte är
 
-Granskningsloggen innehåller **formella händelser** med tvingande rättslig grund (LEF/LFS-protokollföring) eller självvalt samtycke (reservation, publicerad motion). Den är inte uttömmande register för allt som händer i eller omkring föreningen. Se [mission.md#grund-policies](mission.md#grund-policies) policy 8 och [grunddata.md](grunddata.md) för helhetsramverket.
+Granskningsloggen innehåller **formella händelser** med tvingande rättslig grund (LEF/LFS-protokollföring) eller självvalt samtycke (reservation, publicerad motion). Den är inte uttömmande register för allt som händer i eller omkring föreningen. Se [policy 8 i mission.md](mission.md#grund-policies) och [grunddata.md](grunddata.md) för helhetsramverket.
 
 - **Inte operativ data.** Mätvärden, bokningar, inventarier, skaderapporter, störningsanmälan — hanteras i externa verktyg ([architecture.md#utanför-scope](architecture.md)). Om ett beslut fattats om dem loggas *beslutet*, inte den operativa datamängden.
-- **Inte styrelsens interna utkast.** Draft-mode är friktionsfri; loggen börjar vid publicering. En lista där styrelsen brainstormar möjliga leverantörer ingår inte.
-- **Inte chattloggar, kommentartrådar eller informell kommunikation.** E-post och muntliga samtal mellan ledamöter är utanför systemet. Anslagstavlan finns som enkelriktad push från styrelsen; fri kommentarfunktion eller diskussionstrådar på ärenden är inte del av systemet — föreningsdemokratisk debatt sker på stämman.
-- **Inte åsikter om personer.** Svensk rätt (Regeringsformen 2:3 + GDPR Art. 9) förbjuder åsiktsregistrering utan rättslig grund och samtycke. Personliga bedömningar av medlemmar/ledamöter/sökande hör i privat arbetsyta för respektive roll (se [grunddata.md](grunddata.md) *Tre persistens-nivåer*), inte i granskningsloggen.
-- **Inte rättsliga ställningstaganden.** Juridiska referenser (polisanmälnings-, åtals-, domnummer) lagras som data — offentliga handlingar — men systemet kategoriserar inte händelser som brott, varnar inte om misstänkta överträdelser och flaggar inte medlemmar som "problemfall" innan domstol har avgjort. "Oskyldig tills motsatsen bevisas."
-- **Inte privat arbetsyta.** Revisorns egna anteckningar, medlemsansvarigs beredningsnoter, valberedarens arbetsnoter är ägarens data. Systemet tillhandahåller arbetsytan; dess innehåll hör inte i föreningens granskningslogg.
+- **Inte styrelsens interna utkast och arbetsyta.** Draft-mode är friktionsfri; arbetsyta (individuell / delegerings­bunden / styrelse-gemensam) ligger utanför hash-kedjan. Loggen börjar vid publicering. Se [grunddata.md](grunddata.md) *Tre persistens-nivåer*.
+- **Inga dedikerade chatt-, forum- eller kommentar-features** (per [policy 8](mission.md#grund-policies)). E-post och muntliga samtal mellan ledamöter är utanför systemet. Anslagstavlan finns som enkelriktad push från styrelsen; fri kommentarfunktion på ärenden är inte en del av systemet.
+- **Inga strukturerade åsiktsregistrerings-fält.** Loggen har inga "medlemsbedömning"-, "problemmedlem-tagg"- eller liknande dedikerade strukturer. Åsikter uttryckta inom legitima fritextfält (styrelsens yttrande, reservation med motivering, motionstext) är del av händelsens innehåll och ligger där eftersom de är formellt uttryckta av namngiven part i ett legitimt governance-ärende.
+- **Inga rättsliga kategoriseringar.** Juridiska referenser (polisanmälnings-, åtals-, domnummer) lagras som data/bilagor. Inget automatiskt system markerar händelser som "brott" eller medlemmar som "överträdare" pre-domstol.
 
 ## Öppna frågor
 

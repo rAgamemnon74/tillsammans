@@ -47,31 +47,50 @@ Fullständig händelsetyps-katalog i [granskningslogg.md](granskningslogg.md).
 
 **Konsekvens 2:** Inget skrivs över. Varje ändring är en ny händelse. Aktuellt tillstånd är projektion av hela loggen bakåt. Rättelse sker via ny korrigerings-händelse, inte via mutation.
 
-### Vad som *inte* hör i loggen
+### Vad systemet inte bygger som egna features
 
-Tre gränser — per [policy 8 i mission.md](mission.md#grund-policies):
+Systemet är verksamhetsstödjande — det utgår från att användare är vettiga och censurerar inte innehåll i legitima fritextfält. Det bygger däremot inte features *dedikerade för* eller *exklusivt tjänande* problematiska mönster. Se [policy 8 i mission.md](mission.md#grund-policies) för helhetsramverket; i korthet:
 
-- **Åsikter om personer.** Svensk rätt (Regeringsformen 2:3 + GDPR Art. 9) förbjuder åsiktsregistrering utan rättslig grund och samtycke. Personliga bedömningar av medlemmar/sökande/entreprenörer hör inte i loggen.
-- **Debatt och kommentartrådar.** Diskussion mognar till motion eller förs på stämman — inte som kommentarkedjor i systemet. Parallella debatt-arenor urholkar stämman som förhandlingsforum.
-- **Rättsliga ställningstaganden.** Juridiska referenser (polisanmälnings-, åtals-, domnummer) lagras som data, men systemet kategoriserar inte händelser som brott och varnar inte om misstänkta överträdelser innan domstol har avgjort.
+- Inga dedikerade åsiktsregistrerings-fält (*"medlemsbedömning"*, *"problemmedlem-tagg"*).
+- Inga kommentartrådar eller forum på ärenden.
+- Inga automatiska kategoriseringar av händelser som brott eller flaggor på medlemmar baserat på rättsliga referenser pre-domstol.
+
+Om en styrelseledamot skriver olämpligt innehåll i ett motion-utkast eller beredningsdokument är det föreningens angelägenhet — systemet polisar inte.
 
 ## Tre persistens-nivåer
 
 Förening-relaterad data bor i tre lager med olika ändamål och rättsliga egenskaper:
 
-| Nivå | Exempel | Persistens | I hash-kedja | Bevis? |
+| Nivå | Scope | Persistens | I hash-kedja | Bevis? |
 |---|---|---|---|---|
-| **Draft (flyktigt)** | Utkast i formulär, pågående skrivfält | Session-bundet, inte persisterat | – | – |
-| **Privat arbetsyta** | Revisorns egna noteringar, medlemsansvarigs beredningsanteckningar, valberedarens arbetsnoter | Ägarens egen data, inte föreningens logg. Ägaren styr retention. | Nej | Nej |
-| **Granskningslogg (signerad)** | Formella händelser med tvingande rättslig grund eller självvalt samtycke | Ja | Ja | Ja |
+| **Draft (flyktigt)** | Sessionsägaren | Inte persisterat | – | – |
+| **Arbetsyta** | Varierar (se *Arbetsytans scope* nedan) | Ja, ägare/rollgrupp styr retention | Nej | Nej |
+| **Granskningslogg (signerad)** | Per visibility-klass (PUBLIC/MEMBER/BOARD/AUDITOR/PERSON) | Ja, append-only | Ja | Ja |
 
 **Draft** är flyktigt. Inget spår efter stängt formulär.
 
-**Privat arbetsyta** är ägarens domän — revisorns anteckningar är *revisorns* data, inte föreningens. Systemet tillhandahåller arbetsytan men persisterar inte innehållet som del av föreningens register. Retention, radering och innehåll är ägarens val. Lösning för Spår 2-rapportens lucka om revisor-anteckningar (lucka 30).
+**Arbetsytan** är beredningsutrymmet — utkast, anteckningar, delat beredningsarbete. Den är separerad från granskningsloggens hash-kedja (redigerbar, gallringsbar) men lagras i föreningens databas.
 
 **Granskningsloggen** är föreningens register — formella händelser, hash-kedjad, bevis-värdig.
 
-Det finns **ingen fjärde nivå** som fångar "vem gjorde vad under beredning". Att konstruera en sådan "arbetslogg" skulle bryta mot åsiktsregistreringsförbudet.
+### Arbetsytans scope
+
+Arbetsyta är inte alltid individuell. Beroende på arbetets natur har scope olika varianter:
+
+| Scope | Exempel | Vem ser |
+|---|---|---|
+| **Individuellt** | Revisorns egna reflektioner; valberedarens intervju-intryck; medlemsansvarigs tidiga bedömning innan beslut | Endast ägaren |
+| **Delegerings-/ärendebundet** | Ordförande delegerar upphandling till vice ordförande | Delegerare + delegerad |
+| **Rollgrupp — styrelsen** | Sekreteraren skissar dagordning, kassören bifogar utlägg-utkast, ordföranden kommenterar | Alla styrelseledamöter |
+| **Rollgrupp — revisorer** | Revisor + revisorssuppleant delar granskningsarbete | Revisor + suppleant |
+
+Jäv bryter scope för det specifika ärendet: en jävig styrelseledamot ser inte arbetsyta-innehåll för det ärendet.
+
+**Handover:** Om en person blir oförmögen (sjuk, avgår) kan individuell arbetsyta överföras via `STYRELSEBESLUT`. Delegeringsbunden arbetsyta återgår till delegeraren när uppdraget avslutas. Rollgrupp-arbetsyta följer rollen — nyvald sekreterare har access till föregående sekreterares pågående ärenden.
+
+Arbetsytans RBAC är åtkomst-scope, inte kryptografisk. Systemet censurerar inte innehållet — det är föreningens ansvar att använda arbetsytan sakligt.
+
+Det finns **ingen fjärde nivå** som försöker spåra *"vem ändrade vad kl. 14:32"* utanför dessa tre mekanismer. Beredningsaktivitet hanteras inom arbetsyta enligt scope; formella händelser går i granskningsloggen.
 
 ## Entiteter som projektion
 

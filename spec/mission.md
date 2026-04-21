@@ -54,11 +54,11 @@ Principer som styr all spec-utveckling. Fördjupningar i de filer som refereras.
 5. **Governance-kärna, inte operativ plattform.** Detaljer i *Fastslagna beslut* nedan och i [architecture.md](architecture.md).
 6. **Normal människor, lekmannastyrelser, fritidsaktivitet.** Komplexiteten ligger i systemet, inte hos användarna. Initial installation ska rymmas på ~2 timmar med minimal dokumentuppsättning.
 7. **Gradvis nyttoackumulering.** Föreningen betalar komplexitets-kostnaden när funktionen faktiskt behövs. Varje installations-fas är självstående användbar — ingen allt-eller-inget-onboarding.
-8. **Inte polis, inte skatteverk, inte domstol, inte debatt-arena.** Systemet tar inte ställning. Fyra aspekter:
+8. **Inte polis, inte skatteverk, inte domstol, inte debatt-arena.** Systemet är verksamhetsstödjande, inte övervakande — utgångspunkten är att användare är vettiga. Systemet *bygger inte* dedikerade features för missbruk, men censurerar inte heller innehåll i legitima fritextfält. Missbruk är föreningens problem (GDPR-ansvarig), inte systemets. Fyra aspekter av denna *arkitektoniska återhållsamhet*:
    - *Inte tillsynsmyndighet* — validerar inte civilrättsliga frågor, moderniserar inte gamla stadgar, tvingar inte fram "rätt" beteende.
-   - *Rättslig agnostisism* — juridiska referenser (polisanmälnings-, åtals-, domnummer) behandlas som data (offentliga handlingar), inte som betyg. Systemet kategoriserar inte händelser som brott, varnar inte om misstänkta överträdelser, flaggar inte medlemmar som "problemfall" innan domstol har avgjort. "Oskyldig tills motsatsen bevisas" gäller även här.
-   - *Ingen åsiktsregistrering* — Regeringsformen 2:3 + GDPR Art. 9. Systemet persisterar inte åsikter om personer utan rättslig grund och samtycke. Det gäller både föreningens logg och eventuella sidokonstruktioner.
-   - *Inte debatt-as-a-service* — kommentartrådar, forum, "likes" på förslag är inte funktioner i systemet. Föreningsdemokratin sker på stämman; digitalt gränssnitt ersätter den inte och urholkar den inte.
+   - *Rättslig agnostisism* — juridiska referenser (polisanmälnings-, åtals-, domnummer) lagras som data (offentliga handlingar), inte som betyg. Inga dedikerade varnings-/flaggsystem för "misstänkta överträdelser" innan domstol avgjort.
+   - *Ingen åsiktsregistrering som feature* — Regeringsformen 2:3 + GDPR Art. 9 är föreningens ansvar (personuppgiftsansvarig). Systemet bygger inga strukturerade fält för "medlemsbedömning", "problemmedlem-tagg" eller liknande dedikerade strukturer.
+   - *Inte debatt-as-a-service* — kommentartrådar, forum, "likes" på förslag är inte funktioner. Föreningsdemokratin sker på stämman.
 
 ### Hot- och skydds-modell
 
