@@ -38,6 +38,41 @@ På samma sätt som *"vi har en auktoriserad revisor"* är ett trovärdighetsmä
 - **Inte full insyn i pågående ärenden.** Personärenden, pågående juridiska processer och liknande har fortsatt avgränsad insyn enligt GDPR och föreningspraxis.
 - **Inte röstning-as-a-service till medlemmar.** Den formella makten ligger kvar hos stämman och styrelsen enligt stadgarna. Systemet replikerar föreningsdemokratin — det omdefinierar den inte.
 
+## Grund-policies
+
+Principer som styr all spec-utveckling. Fördjupningar i de filer som refereras.
+
+### Filosofisk grund
+
+1. **Synlighet framför tvingning.** Granskningsloggen är tolknings-underlag för medlemmar, revisor och eventuellt domstol — inte en tamper-proof enforcement-mekanism. Skyddet är att handlingar blir läsbara bakåt, inte att fel blir omöjliga framåt. Se [granskningslogg.md](granskningslogg.md).
+2. **Förtroendevald = förhandsgivet förtroende.** Styrelsen har mandat från medlemmarna. Systemet utgår från den tilliten och synliggör förvaltningen — ersätter den inte med tekniska garantier. Förtroende förnyas eller dras tillbaka med evidens från loggen, inte genom strukturella spärrar i förväg.
+3. **Förening = pågående förhandling.** Stadga, praxis, roller omförhandlas löpande. Systemet dokumenterar förhandlingens förlopp, låser inte fast dess position. Det som var "fel" kan bli "sed"; systemet bär hela spåret.
+4. **Årlig periodfrekvens som grundrytm.** Räkenskapsåret är den primära tidsenheten. Kallelse → stämma → ansvarsfrihet → budget → debiteringslängd → revision. Den takt LEF, LFS och Anläggningslagen föreskriver. Se [föreningen.md](föreningen.md), [granskningslogg.md](granskningslogg.md).
+
+### Scope och ambition
+
+5. **Governance-kärna, inte operativ plattform.** Detaljer i *Fastslagna beslut* nedan och i [architecture.md](architecture.md).
+6. **Normal människor, lekmannastyrelser, fritidsaktivitet.** Komplexiteten ligger i systemet, inte hos användarna. Initial installation ska rymmas på ~2 timmar med minimal dokumentuppsättning.
+7. **Gradvis nyttoackumulering.** Föreningen betalar komplexitets-kostnaden när funktionen faktiskt behövs. Varje installations-fas är självstående användbar — ingen allt-eller-inget-onboarding.
+8. **"Inte polis eller skatteverk."** Systemet validerar inte civilrättsliga frågor, moderniserar inte gamla stadgar, tvingar inte fram "rätt" beteende. Det dokumenterar och synliggör.
+
+### Hot- och skydds-modell
+
+9. **Hotet är internt.** Styrelser, medlemmar, entreprenörer inom föreningen — inte externa hackare. Tre klasser: informella påtryckningar, asymmetrier, historierevision. Se [threats.md](threats.md).
+10. **Revisorn som konstitutionellt oberoende motvikt.** Permanent läsrätt från dag 1, egen arbetsyta, inte valbar tillsammans med styrelseuppdrag. Se [roles/oversight-roles.md](roles/oversight-roles.md).
+11. **Bevarande med bevisvärde.** Hash-kedja, OpenTimestamps, kanonisering. Syfte: att granskare 2046 ska kunna lita på att 2026 års logg är den som skrevs 2026 — inte att förhindra illegitima skrivningar i realtid.
+
+### Data- och design-hållning
+
+12. **Lapptäcket — exponerar, dömer inte.** Flera källor tillåts parallellt. Dokumentkonflikter flaggas, löses inte automatiskt. Föreningen bygger sanning genom beslut. Se [domain-model.md](domain-model.md).
+13. **Typ-anpassning utan typ-läckage i kärnan.** `AssociationType` styr konfiguration och terminologi, aldrig if-grenar i governance-logiken. Edition-specifika mönster i `spec/editions/`. Se [architecture.md](architecture.md).
+
+### Projekt-institution
+
+14. **Open source som förtroende-mekanism.** MIT. Verifikations-rapporter är offentliga. Transparens inte bara i loggens händelser utan i själva spec-arbetet. Fördjupas i *Förtroendemodellen* ovan.
+15. **Svensk domän hela vägen.** UI, URL-sökvägar, terminologi på svenska. Kod på engelska. Lagrum (LFS, Anläggningslagen, LEF) som första-klass-referenser.
+16. **Analys-regler-disciplin.** Varje spec-ändring granskas mot [analysis-rules.md](analysis-rules.md) — projektets systematiska försvar mot att governance-öppningar smyger in via välmenande funktioner.
+
 ## Fastslagna beslut
 
 - **Open source, MIT-licens** (samma som Hemmet).
