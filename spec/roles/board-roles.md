@@ -17,7 +17,7 @@ Styrelsen är föreningens verkställande organ — vald av stämman för att dr
 ## Principer
 
 1. **Lag och stadga styr — inte teknik.** En roll är primär om lag eller stadgar behandlar den som distinkt (eget ansvar, egen jävsläge, egen signeringsrätt). Annars ligger den som attribut på en annan roll.
-2. **Typ-agnostisk kärna.** Rollnycklarna är identiska mellan `AssociationType`. Skillnader i vardag (debiteringslängd, servitut-hantering, insats-administration) sker via data och i18n — inte via typ-specifika rollnycklar. Brott mot detta är ett arkitekturläckage; se [architecture.md](../architecture.md).
+2. **Typ-agnostisk kärna.** Rollnycklarna är identiska mellan `AssociationType` per [policy 13](../mission.md#grund-policies). Skillnader i vardag (debiteringslängd, servitut-hantering, insats-administration) sker via data och i18n — inte via typ-specifika rollnycklar.
 3. **RBAC är minimalt explicit.** Varje roll har en kärn-permission-uppsättning som speglar dess lagstyrda ansvar. Finare behörigheter byggs av sammansättningar — inte av fler roller.
 4. **Solidariskt ansvar är synligt per ledamot.** Varje beslut loggar individuell position (ja/nej/nedlagd/reservation/frånvarande). Se [core-concepts.md#reservation-och-solidariskt-ansvar](../core-concepts.md#reservation-och-solidariskt-ansvar).
 5. **Vakanser är synliga.** Att en roll är vakant ska vara synligt i styrelsevyn, inte gömt.

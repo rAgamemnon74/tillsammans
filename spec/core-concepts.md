@@ -57,9 +57,9 @@ Röstlängden är ett snapshot vid kallelse, men **slutgiltig etablering sker n�
 - **Representationsfrågor** — vem röstar för samägd fastighet / dödsbo / juridisk person?
 - **Mandatverifiering för juridisk person** — representantens bemyndigande (Bolagsverket-utdrag, fullmakt, styrelseprotokoll, delegationsordning) granskas av mötesordförande eller särskilt utsedd person. Mandat som är för gamla, oklara eller tvistiga kan föranleda att mötesordföranden begär nytt dokument eller att representationen inte godkänns för just denna stämma. Vid *"i förening"*-mandat krävs närvaro av samtliga representanter för att rösten ska kunna avges. Se [medlemskap.md#juridisk-person-som-medlem](medlemskap.md#juridisk-person-som-medlem).
 
-**Principen: Tillsammans löser inga civilrättsliga tvister — föreningen ska kunna komma vidare.** Oklara fall dokumenteras (vem hävdade vad, varför), rösten för den fastigheten avges inte den stämman, parterna hänvisas till rätt forum (domstol, Lantmäteri). Sedan kör stämman vidare på de klara fallen.
+**Principen: föreningen ska kunna komma vidare** (tillämpning av [policy 8](mission.md#grund-policies) — systemet är inte tillsynsmyndighet, avgör inte civilrättsliga frågor). Oklara fall dokumenteras (vem hävdade vad, varför), rösten för den fastigheten avges inte den stämman, parterna hänvisas till rätt forum (domstol, Lantmäteri). Sedan kör stämman vidare på de klara fallen.
 
-Detta är värdefullt: utan denna princip kan en enskild tvist låsa hela stämman. *"Kom vidare"* är ett försvar mot obstruktion.
+Utan den principen kan en enskild tvist låsa hela stämman — *"kom vidare"* är ett försvar mot obstruktion.
 
 ## Jäv (conflict of interest)
 

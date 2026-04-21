@@ -121,7 +121,7 @@ Se [threats.md](../threats.md):
 - **Skuggrepresentation:** krav på dokumenterat bemyndigande + ålderskrav minskar risken att rätt person inte är behörig.
 - **Verifikation som teaterföreställning:** mänsklig granskning är obligatorisk; systemet får inte auto-godkänna baserat på filuppladdning.
 - **Civilrättsliga tvister inom juridisk person:** "Tillsammans löser inga civilrättsliga tvister" ([core-concepts.md](../core-concepts.md#röstlängdsetablering--processen-vid-stämmans-öppnande)) — vid tvist mellan firmatecknare avges ingen röst, parterna hänvisas till sin egen governance.
-- **Stämpling/diskriminering:** systemet flaggar inte juridiska personer som "misstänkta" — registrerar bara fakta. Förtroendevaldas moraliska kompass avgör vid tveksamhet ([medlemskap.md#vad-systemet-uttryckligen-inte-gör](../medlemskap.md#vad-systemet-uttryckligen-inte-gör)).
+- **Stämpling/diskriminering:** per [policy 8](../mission.md#grund-policies) flaggar systemet inte juridiska personer som "misstänkta" — det registrerar fakta. Förtroendevaldas moraliska kompass avgör vid tveksamhet ([medlemskap.md#vad-systemet-uttryckligen-inte-gör](../medlemskap.md#vad-systemet-uttryckligen-inte-gör)).
 
 ## Öppna frågor
 

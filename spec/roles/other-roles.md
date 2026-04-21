@@ -113,7 +113,7 @@ Attributöverlägg skapas genom tilldelning, inte genom stämmans val — undant
 
 Roller som andra plattformar (särskilt Hemmet för BRF) har men som Tillsammans medvetet saknar:
 
-- **`BOARD_PROPERTY_MGR`** — fastighetsansvarig som egen styrelsepost. I Tillsammans är fastighet/anläggning operativt scope ([architecture.md](../architecture.md)) → externt verktyg. Om en förening vill utse en person som särskilt fastighetsansvarig blir det ett utskott eller ett attribut, inte egen rollnyckel.
+- **`BOARD_PROPERTY_MGR`** — fastighetsansvarig som egen styrelsepost. Fastighet/anläggning är operativt scope ([policy 5](../mission.md#grund-policies)); en förening som vill utse särskilt fastighetsansvarig gör det som utskott eller attribut, inte egen rollnyckel.
 - **`BOARD_ENVIRONMENT`, `BOARD_EVENTS`** — miljö-/evenemangsansvariga. Samma skäl: operativt.
 - **Admin som distinkt roll.** Hemmet har `ADMIN` separat från styrelseroller för teknisk konfiguration. I Tillsammans ligger teknisk konfiguration hos styrelsen själva — det finns ingen extern "föreningsadmin" som inte är förtroendevald.
 - **Resident / Boende.** Hemmet skiljer medlem (andelsägare) från boende (kan vara hyresgäst). Tillsammans har inte boende-begreppet — om föreningen har hyresgäster hanteras de utanför governance-scopet.

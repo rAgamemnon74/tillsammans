@@ -155,7 +155,7 @@ Juridisk och fysisk person kan fritt samäga — ingen begränsning.
 
 ### Vad systemet uttryckligen *inte* gör
 
-Tillsammans är **varken polis eller skatteverk**. Identifiering av skuggföretag, brevlådebolag eller strukturer där verklig huvudman döljs är utanför uppdraget. Systemet:
+Per [policy 8](mission.md#grund-policies) ligger identifiering av skuggföretag, brevlådebolag eller strukturer där verklig huvudman döljs utanför uppdraget. Systemet:
 
 - Registrerar fakta: organisationsnummer, legal_form, representant, bemyndigandedokument.
 - Tillgängliggör underlaget för förtroendevalda och revisor.

@@ -4,17 +4,11 @@
 
 ## Arkitektur — rent governance-fokus
 
-**Kärninsikten:**
-
-> Förtroendevald-rollerna är extremt lika mellan föreningstyperna. Det operationella stödet skiljer sig enormt — både *mellan* typer och *inom* samma typ.
-
-Styrelsens vardag — möten, beslut, jäv, protokoll, utbetalningar mot beslut, revisorsgranskning, röstlängd, bordläggning — är nästan identisk oavsett om föreningen förvaltar en skogsväg, en vattenanläggning eller en ekonomisk förening. Det operativa — vad föreningen faktiskt *gör* mellan mötena — divergerar så kraftigt att varje försök att bygga gemensamma operativa moduler skulle drunkna i undantag.
-
-**Slutsats:** Tillsammans bygger *bara* governance-kärnan. Operativa behov löses med befintliga verktyg.
+Denna fil detaljerar [policy 5 (governance-kärna, inte operativ plattform)](mission.md#grund-policies) och [policy 13 (typ-anpassning utan typ-läckage)](mission.md#grund-policies). Den empiriska observationen som stöder policy 5: styrelsens vardag — möten, beslut, jäv, protokoll, utbetalningar mot beslut, revisorsgranskning, röstlängd, bordläggning — är nästan identisk mellan föreningstyperna, medan det *operativa* arbetet (vad föreningen gör mellan mötena) divergerar så kraftigt att gemensamma operativa moduler skulle drunkna i undantag.
 
 ### Inom scope (governance-kärnan)
 
-Domänagnostisk kärna, samma kod oavsett `AssociationType`:
+Kärnans funktioner, lika oavsett `AssociationType`:
 
 - Roller och RBAC
 - Möten, dagordning, protokoll, beslutslogg
@@ -48,7 +42,7 @@ Explicit avgränsat bort — finns redan och skiljer sig för mycket per föreni
 
 ### Typ-anpassning utan typ-läckage i kärnan
 
-`AssociationType` styr konfiguration, inte kod-förgreningar i kärnlogik:
+Konkretisering av [policy 13](mission.md#grund-policies). `AssociationType` styr konfiguration, inte kod-förgreningar i kärnlogik:
 
 - **Onboarding-wizarden** forkar per typ (manuell digital tvilling för samfällighet, formell ansökan-flöde för LEF).
 - **Terminologi-lager** (i18n-liknande) mappar generiska termer till typ-specifika: `medlem` → *tomtägare* / *sakägare* / *medlem*.

@@ -324,7 +324,7 @@ Om föreningen underproducerar i förhållande till minimum:
 - Revisorn får prioriterade varningar.
 - Nästa års planering startar med kvardröjande flaggor från förra årets brister.
 
-Systemet stämplar aldrig enskilda personer som ansvariga. Signaler tolkas enligt [analysis-rules.md#diagnostiska-signaler](analysis-rules.md) — en av tre rot-orsaker (engagemang, system-miss, CX/UX).
+Signaler tolkas enligt [analysis-rules.md#diagnostiska-signaler](analysis-rules.md) — en av tre rot-orsaker (engagemang, system-miss, CX/UX). Per [policy 8](mission.md#grund-policies) pekar signalerna på var problemet ligger, aldrig ut vem.
 
 ## Vad som uttryckligen *inte* är minimum
 
