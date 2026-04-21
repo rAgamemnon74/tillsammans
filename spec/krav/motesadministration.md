@@ -39,6 +39,10 @@ Kraven är numrerade per kategori (`K-XXX-N`) för spårbarhet i kommande spec-i
 - **K-DAGORDNING-3:** Sekreteraren ska kunna anteckna per punkt under mötet (real-time eller efteråt). Anteckningar är del av punkten, inte separat dokument.
 - **K-DAGORDNING-4:** Ordning kan ändras före publicering (kallelse). Efter publicering krävs explicit motivering registrerad i granskningsloggen.
 - **K-DAGORDNING-5:** Mötesordförande kan föra upp punkt mid-möte (typiskt under "Övriga frågor") som registreras som tillägg till dagordningen.
+- **K-DAGORDNING-6:** Dagordningspunkt kan ha attributet `responsibleActorId` som pekar på ansvarig aktör för punktens underlag (t.ex. kassör för ekonomisk rapport, ordförande för verksamhetsberättelse, revisor för revisionsberättelse, utskottets kontaktperson för utskottsrapport). Attributet är valfritt; punkter utan ansvarig har ingen saknad-flagga.
+- **K-DAGORDNING-7:** Bilagor kan bifogas per dagordningspunkt via `BILAGA_INLÄMNAD` med `references = [agenda_item_id]`. Två flöden: utkast i styrelsens arbetsyta (rollgrupp-scope, se [grunddata.md#arbetsytans-scope](../grunddata.md#arbetsytans-scope)) under beredning; publicering till granskningsloggen vid kallelseutskick eller löpande. Bilagor följer bilage-mekaniken i K-INTEGRATION-4.
+- **K-DAGORDNING-8:** RBAC för punkt-bilagor: ansvarig ledamot publicerar för sin punkt; sekreteraren och ordförande har rätt att publicera för alla punkter (backup). Övriga styrelseledamöter kan redigera utkast i arbetsytan men publicerar inte andra ledamöters rapporter.
+- **K-DAGORDNING-9:** Saknad-flagga: dagordningspunkt med `responsibleActorId` men utan publicerad bilaga vid kallelseutskick flaggas *"förväntad rapport saknas"* i styrelsens mötesvy. Flaggan är deskriptiv — den pekar på var rapporten saknas, inte ut vem (per [policy 8](../mission.md#grund-policies)).
 
 ## 4. Roller och behörigheter
 

@@ -195,6 +195,41 @@ Inför varje möte erbjuder Tillsammans (sekreteraren använder):
 6. **Påminnelser** — till berörda aktörer enligt mötestypens distributionsregel ([case-types.md#distribution-och-notifiering](case-types.md#distribution-och-notifiering))
 7. **Förberedande dokument** — verksamhetsberättelse, revisionsberättelse, ekonomisk rapport — länkas in om de finns i dokumentarkivet
 
+## Bilagor per dagordningspunkt och ansvar
+
+Vissa dagordningspunkter har naturligt knutna rapporter: ekonomisk rapport till kassörens punkt, förvaltningsrapport till förvaltningspunkten, revisionsberättelse till revisorns punkt. Systemet stödjer att **ansvarig ledamot** bifogar dokumentet direkt till "sin" punkt.
+
+### Ansvar per punkt
+
+En dagordningspunkt kan ha attributet `responsibleActorId` — referens till den aktör som förväntas leverera underlag till punkten. Exempel:
+
+| Punkt | Typisk ansvarig |
+|---|---|
+| Ekonomisk rapport | Kassören |
+| Verksamhetsberättelse | Ordförande eller sekreteraren |
+| Revisionsberättelse | Revisorn |
+| Förvaltningsrapport | Ordförande eller utsedd ledamot |
+| Utskotts-rapport | Utskottets kontaktperson |
+
+Attributet sätts vid dagordnings-skapande och kan justeras tills kallelsen publiceras.
+
+### Två flöden — beredning och publicering
+
+- **Beredning.** Ansvarig ledamot arbetar på rapporten i styrelsens arbetsyta (rollgrupp-scope; se [grunddata.md#arbetsytans-scope](grunddata.md#arbetsytans-scope)). Utkastet är synligt för styrelsen men ej publicerat. Redigerbart.
+- **Publicering.** När rapporten är klar (senast vid kallelseutskick, eller löpande fram till mötet) lyfts bilagan till en `BILAGA_INLÄMNAD`-händelse med `references = [agenda_item_id]`. Blir del av kallelsens bilage-paket vid `KALLELSE_UTSKICKAD`. Visibility enligt mötestyp — typiskt MEMBER för stämma, BOARD för styrelsemöte.
+
+Bilage-mekaniken följer [granskningslogg.md#bilagor](granskningslogg.md) — tre typer (FIL, URL, TEXTNOTERING), standard hash-integritet, GDPR-gallringsregler.
+
+### RBAC för punkt-bilagor
+
+- **Ansvarig ledamot** kan bifoga och publicera för sin punkt.
+- **Sekreteraren** (operativ huvudaktör, K-ROLL-1 i [krav/motesadministration.md](krav/motesadministration.md)) och **ordförande** kan publicera för alla punkter — fungerar som backup om ansvarig inte hunnit.
+- **Övriga ledamöter** kan redigera utkast i arbetsytan (styrelse-rollgrupp) men publicerar inte andra ledamöters rapporter.
+
+### Saknad-flagga
+
+Om en punkt har `responsibleActorId` satt men ingen publicerad bilaga vid kallelseutskick visar systemet flaggan *"förväntad rapport saknas"* i styrelsens mötesvy. Deskriptiv — pekar på var rapporten saknas, inte ut vem (per [policy 8](mission.md#grund-policies)).
+
 ## Möten i edition-kontext
 
 **Samfällighet:**
